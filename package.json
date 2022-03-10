@@ -1,0 +1,19 @@
+{
+  "name": "prayer-calls",
+  "version": "1.0.0",
+  "description": "App to document prayer calls",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atsolberg/prayer-calls.git"
+  },
+  "author": "Aaron Solberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atsolberg/prayer-calls/issues"
+  },
+  "homepage": "https://github.com/atsolberg/prayer-calls#readme"
+}
