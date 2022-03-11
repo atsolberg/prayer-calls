@@ -4,7 +4,9 @@
   "description": "App to document prayer calls",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "dev": "parcel src/index.html",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,25 @@
   "bugs": {
     "url": "https://github.com/atsolberg/prayer-calls/issues"
   },
-  "homepage": "https://github.com/atsolberg/prayer-calls#readme"
+  "homepage": "https://github.com/atsolberg/prayer-calls#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@emotion/babel-plugin": "^11.7.2",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.3",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "parcel": "^2.3.2",
+    "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ]
 }
