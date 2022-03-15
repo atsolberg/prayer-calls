@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 
-import { getFiles } from "../../api";
+import { getFiles } from "../../util/api";
 import FileCard from "../file-card/FileCard";
 import Input from "../input/Input";
 
 function SearchParams() {
   const [search, setSearch] = useState("");
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState(null);
 
   function onChange({ target: { value } }) {
     setSearch(value);
   }
 
+  // Fetch markdown files
   useEffect(() => {
-    setFiles(getFiles());
+    getFiles()
+      .then((results) => setFiles(results))
+      .catch((err) => console.log("Error fetching files", err));
   }, []);
 
   return (
@@ -38,9 +41,11 @@ function SearchParams() {
       </form>
 
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {files.map((f) => (
-          <FileCard key={f.id} file={f} />
-        ))}
+        {files?.allIds?.length
+          ? Object.values(files.byId).map((f) => (
+              <FileCard key={f.id} file={f} />
+            ))
+          : null}
       </div>
     </div>
   );

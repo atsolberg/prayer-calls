@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { getFile } from "../api";
+import { getFile } from "../util/api";
 import Modal from "../components/modal/Modal";
 
 function Details() {
