@@ -32,13 +32,19 @@ FileCard.propTypes = {
 function FileCard({ file }) {
   return (
     <div css={styles} className="border relative">
-      <div dangerouslySetInnerHTML={{ __html: getHtml(file).outerHTML }} />
+      <div className="square">
+        <div
+          className="square-content"
+          dangerouslySetInnerHTML={{ __html: getHtml(file).outerHTML }}
+        />
+      </div>
       <Link
         to={`/details/${file.id}`}
         className="absolute top-0 right-0 mr-2 mt-2 p-1 bg-slate-700 rounded"
       >
         {file.name}
       </Link>
+      <div className="absolute bottom-0 left-0 w-full h-1/6 bg-gradient-to-b from-transparent to-slate-900"></div>
     </div>
   );
 }
