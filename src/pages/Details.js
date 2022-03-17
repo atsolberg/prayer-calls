@@ -2,8 +2,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { getFile, convertMdToHtml } from "../util/api";
+import { months } from "../util/constants";
 
 import Modal from "../components/modal/Modal";
+
+function getCallSlug(name) {
+  if (!name) return "";
+  const parts = name.split("-");
+  const month = months[Number(parts[1].replace("0", "")) - 1];
+  return `${month.name.toLowerCase()}-${parts[2]}-${parts[0]}`;
+}
 
 function Details() {
   const { id } = useParams();
@@ -11,6 +19,8 @@ function Details() {
   const [file, setFile] = useState({});
   const [loading, setLoading] = useState(true);
   const { name, contents } = file;
+  const slug = getCallSlug(name);
+  console.log(`slug: `, slug);
 
   useEffect(() => {
     async function fetchData() {
@@ -36,6 +46,22 @@ function Details() {
           Share
         </button>
       </h2>
+      <p>
+        <a
+          href={`https://billyebrim.org/israel-call-${slug}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Morning Call
+        </a>
+        <a
+          href={`https://billyebrim.org/${slug}-noon-prayer/`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Noon Call
+        </a>
+      </p>
       <div
         dangerouslySetInnerHTML={{
           __html: convertMdToHtml(contents).outerHTML,

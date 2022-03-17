@@ -22,3 +22,18 @@ export const styles = {
   error: `${css.fwn}${css.red}`,
   orange: `${css.fwn}${css.orange}`,
 };
+
+export const months = [
+  { name: "January", abbr: "Jan", value: 1 },
+  { name: "February", abbr: "Feb", value: 2 },
+  { name: "March", abbr: "Mar", value: 3 },
+  { name: "April", abbr: "Apr", value: 4 },
+  { name: "May", abbr: "May", value: 5 },
+  { name: "June", abbr: "Jun", value: 6 },
+  { name: "July", abbr: "Jul", value: 7 },
+  { name: "August", abbr: "Aug", value: 8 },
+  { name: "September", abbr: "Sept", value: 9 },
+  { name: "October", abbr: "Oct", value: 10 },
+  { name: "November", abbr: "Nov", value: 11 },
+  { name: "December", abbr: "Dec", value: 12 },
+];
