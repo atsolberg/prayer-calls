@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { getFile } from "../util/api";
+import { getFile, convertMdToHtml } from "../util/api";
+
 import Modal from "../components/modal/Modal";
 
 function Details() {
   const { id } = useParams();
   const [showModal, setShowModal] = useState(false);
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState({});
   const [loading, setLoading] = useState(true);
+  const { name, contents } = file;
 
   useEffect(() => {
     async function fetchData() {
       const res = await getFile(id);
-      // const f = await res.json();
       const f = res;
       setFile(f);
       setLoading(false);
@@ -24,13 +25,22 @@ function Details() {
   return loading ? (
     <h2>Loading...</h2>
   ) : (
-    <div>
-      <h2>{file.name}</h2>
-      <h3>Contents</h3>
-      <p>{file.contents}</p>
-      <button type="button" onClick={() => setShowModal(true)}>
-        Share
-      </button>
+    <div className="my-0 mx-auto w-8/12">
+      <h2 className="mb-3 mt-4 text-sky-500 dark:text-sky-400 font-bold text-xl sm:text-3xl">
+        {name}
+        <button
+          type="button"
+          onClick={() => setShowModal(true)}
+          className="float-right uppercase font-bold border rounded text-sm px-3 py-1 border-slate-500 text-"
+        >
+          Share
+        </button>
+      </h2>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: convertMdToHtml(contents).outerHTML,
+        }}
+      />
       {showModal ? (
         <Modal>
           <h3>Test Modal</h3>

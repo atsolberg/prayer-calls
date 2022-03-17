@@ -8,7 +8,7 @@ const directory = path.join(__dirname, "../../server/db/files");
 const fileNames = fs.readdirSync(directory);
 const files = fileNames.reduce(
   function (acc, name) {
-    const file = { name, id: name, contents: null };
+    const file = { name: name.replace(".md", ""), id: name, contents: null };
 
     acc.allIds.push(name);
     acc.byId[name] = file;
