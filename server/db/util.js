@@ -1,6 +1,9 @@
 import fs from "fs";
 import path from "path";
 
+// https://scripture.api.bible/admin
+const API_KEY = "696aaf815b655732b79bcba7e67311b2";
+
 const directory = path.join(__dirname, "../../server/db/files");
 const fileNames = fs.readdirSync(directory);
 const files = fileNames.reduce(
