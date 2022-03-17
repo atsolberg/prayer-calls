@@ -15,22 +15,25 @@ FileCard.propTypes = {
 function FileCard({ file }) {
   const { id, name, contents } = file;
   return (
-    <div css={styles} className="border relative">
-      <div className="square">
-        <div
-          className="square-content"
-          dangerouslySetInnerHTML={{
-            __html: convertMdToHtml(contents).outerHTML,
-          }}
-        />
-      </div>
+    <div className="relative">
       <Link
         to={`/details/${id}`}
-        className="absolute top-0 right-0 mr-2 mt-2 p-1 bg-slate-700 rounded"
+        css={styles}
+        className="block border border-slate-400 hover:border-sky-500 hover:border-2 relative"
       >
-        {name}
+        <div className="square">
+          <div
+            className="square-content"
+            dangerouslySetInnerHTML={{
+              __html: convertMdToHtml(contents).outerHTML,
+            }}
+          />
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-1/6 bg-gradient-to-b from-transparent to-slate-900" />
       </Link>
-      <div className="absolute bottom-0 left-0 w-full h-1/6 bg-gradient-to-b from-transparent to-slate-900" />
+      <span className="absolute top-0 right-0 mt-2 mr-1.5 p-1 bg-slate-700 rounded">
+        {name}
+      </span>
     </div>
   );
 }

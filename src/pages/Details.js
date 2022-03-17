@@ -5,6 +5,8 @@ import { getFile, convertMdToHtml } from "../util/api";
 import { months } from "../util/constants";
 
 import Modal from "../components/modal/Modal";
+import Button from "../components/button/Button";
+import A from "../components/anchor/A";
 
 function getCallSlug(name) {
   if (!name) return "";
@@ -35,33 +37,36 @@ function Details() {
   return loading ? (
     <h2>Loading...</h2>
   ) : (
-    <div className="my-0 mx-auto w-8/12">
-      <h2 className="mb-3 mt-4 text-sky-500 dark:text-sky-400 font-bold text-xl sm:text-3xl">
-        {name}
-        <button
-          type="button"
-          onClick={() => setShowModal(true)}
-          className="float-right uppercase font-bold border rounded text-sm px-3 py-1 border-slate-500 text-"
-        >
-          Share
-        </button>
-      </h2>
-      <p>
-        <a
-          href={`https://billyebrim.org/israel-call-${slug}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Morning Call
-        </a>
-        <a
-          href={`https://billyebrim.org/${slug}-noon-prayer/`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Noon Call
-        </a>
-      </p>
+    <div className="my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
+      <div className="sm:flex items-center">
+        <h2 className="mb-3 mt-4 text-sky-500 dark:text-sky-400 font-bold text-xl sm:text-3xl">
+          {name}
+        </h2>
+        <p className="ml-auto my-4">
+          <span className="mr-2">Links -</span>
+          <A
+            href={`https://billyebrim.org/israel-call-${slug}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Morning Call
+          </A>
+          <A
+            className="ml-4 pl-4"
+            href={`https://billyebrim.org/${slug}-noon-prayer/`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Noon Call
+          </A>
+          <Button
+            className="float-right hidden"
+            onClick={() => setShowModal(true)}
+          >
+            Share
+          </Button>
+        </p>
+      </div>
       <div
         dangerouslySetInnerHTML={{
           __html: convertMdToHtml(contents).outerHTML,

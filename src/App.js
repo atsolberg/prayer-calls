@@ -3,8 +3,9 @@ import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-import SearchParams from "./components/search-params/SearchParams";
+import Home from "./pages/Home";
 import Details from "./pages/Details";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
       <main>
         <Header />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/details/:id" element={<Details />} />
-          <Route path="/" element={<SearchParams />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
       </main>

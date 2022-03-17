@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import { getFiles } from "../../util/api";
-import FileCard from "../file-card/FileCard";
-import Input from "../input/Input";
+import { getFiles } from "../util/api";
+import FileCard from "../components/file-card/FileCard";
+import Input from "../components/input/Input";
 
-function SearchParams() {
+function Home() {
   const [search, setSearch] = useState("");
   const [files, setFiles] = useState(null);
 
@@ -20,8 +20,8 @@ function SearchParams() {
   }, []);
 
   return (
-    <div className="my-0 mx-auto w-11/12">
-      <form className="p-10 mb-10 rounded-lg bg-gray-200 shadow-lg flex flex-col justify-center items-center">
+    <div className="my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
+      <form className="hidden p-10 mb-10 rounded-lg bg-gray-200 shadow-lg flex flex-col justify-center items-center">
         <label htmlFor="text" className="search-label">
           Search for text
           <Input
@@ -40,10 +40,10 @@ function SearchParams() {
         </button>
       </form>
 
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-16 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {files?.allIds?.length
-          ? Object.values(files.byId).map((f) => (
-              <FileCard key={f.id} file={f} />
+          ? files.allIds.map((id) => (
+              <FileCard key={id} file={files.byId[id]} />
             ))
           : null}
       </div>
@@ -51,4 +51,4 @@ function SearchParams() {
   );
 }
 
-export default SearchParams;
+export default Home;

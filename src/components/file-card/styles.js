@@ -1,6 +1,9 @@
 import { css } from "@emotion/react";
 
 const styles = css`
+  &:hover .square-content {
+    padding: 14px;
+  }
   .square {
     position: relative;
     width: 100%;

@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
+import q from "../../util/element";
 
 function Header() {
+  function onTheme() {
+    const root = q("html");
+    const isDark = q.is(root, ".dark");
+    if (isDark) {
+      localStorage.theme = "light";
+      root.classList.remove("dark");
+    } else {
+      localStorage.theme = "dark";
+      root.classList.add("dark");
+    }
+  }
+
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-700 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
       <div className="max-w-7xl mx-auto">
@@ -10,7 +23,7 @@ function Header() {
               🙏&nbsp;&nbsp;☎️
             </Link>
 
-            <div className="relative hidden lg:flex items-center ml-auto">
+            <div className="relative flex items-center ml-auto">
               <nav className="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
                 <ul className="flex space-x-8">
                   <li>
@@ -22,7 +35,7 @@ function Header() {
                 <label className="sr-only" htmlFor="theme-toggle">
                   Theme
                 </label>
-                <button type="button" id="theme-toggle">
+                <button type="button" id="theme-toggle" onClick={onTheme}>
                   <span className="dark:hidden">
                     <svg
                       viewBox="0 0 24 24"

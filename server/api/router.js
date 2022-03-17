@@ -4,6 +4,9 @@ import { getFileDirectory } from "../db/util";
 const router = express.Router();
 const files = getFileDirectory();
 
+// https://scripture.api.bible/admin
+const API_KEY = "696aaf815b655732b79bcba7e67311b2";
+
 // Get All
 router.get("/", (req, res) => {
   res.send({ files });
