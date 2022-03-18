@@ -6,7 +6,8 @@ import { renderToNodeStream } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import fs from "fs";
 
-import api_router from "./api/router";
+import file_router from "./api/files/router";
+import bible_router from "./api/bible/router";
 import App from "../src/App";
 
 const PORT = process.env.PORT || 3000;
@@ -27,7 +28,8 @@ app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 // API routes
-app.use("/api/files", api_router);
+app.use("/api/files", file_router);
+app.use("/api/bible", bible_router);
 
 // HTML routes
 app.use((req, res) => {

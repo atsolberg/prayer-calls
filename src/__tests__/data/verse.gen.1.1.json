@@ -1,0 +1,19 @@
+{
+  "id": "GEN.1.1",
+  "orgId": "GEN.1.1",
+  "bookId": "GEN",
+  "chapterId": "GEN.1",
+  "bibleId": "de4e12af7f28f599-02",
+  "reference": "Genesis 1:1",
+  "content": "<p class=\"p\">In the beginning God created the heaven and the earth. </p>",
+  "verseCount": 1,
+  "copyright": "PUBLIC DOMAIN except in the United Kingdom, where a Crown Copyright applies to printing the KJV. See http://www.cambridge.org/about-us/who-we-are/queens-printers-patent",
+  "next": {
+    "id": "GEN.1.2",
+    "number": "2"
+  },
+  "previous": {
+    "id": "GEN.intro.0",
+    "number": "0"
+  }
+}

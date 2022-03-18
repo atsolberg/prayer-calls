@@ -1,0 +1,28 @@
+{
+  "id": "de4e12af7f28f599-02",
+  "dblId": "de4e12af7f28f599",
+  "relatedDbl": null,
+  "name": "King James (Authorised) Version",
+  "nameLocal": "King James Version",
+  "abbreviation": "engKJV",
+  "abbreviationLocal": "KJV",
+  "description": "Protestant",
+  "descriptionLocal": "Protestant",
+  "language": {
+    "id": "eng",
+    "name": "English",
+    "nameLocal": "English",
+    "script": "Latin",
+    "scriptDirection": "LTR"
+  },
+  "countries": [
+    {
+      "id": "GB",
+      "name": "United Kingdom",
+      "nameLocal": "United Kingdom"
+    }
+  ],
+  "type": "text",
+  "updatedAt": "2022-01-07T15:05:57.000Z",
+  "audioBibles": []
+}

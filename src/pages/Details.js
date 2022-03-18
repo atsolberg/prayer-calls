@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { getFile, convertMdToHtml } from "../util/api";
+import { getFile } from "../util/api";
+import { formatFileDate } from "../util/date";
 import { months } from "../util/constants";
+import { convertMdToHtml } from "../util/markdown";
 
 import Modal from "../components/modal/Modal";
 import Button from "../components/button/Button";
@@ -40,7 +42,7 @@ function Details() {
     <div className="my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
       <div className="sm:flex items-center">
         <h2 className="mb-3 mt-4 text-sky-500 dark:text-sky-400 font-bold text-xl sm:text-3xl">
-          {name}
+          {formatFileDate(name)}
         </h2>
         <p className="ml-auto my-4">
           <span className="mr-2">Links -</span>
@@ -52,7 +54,7 @@ function Details() {
             Morning Call
           </A>
           <A
-            className="ml-4 pl-4"
+            className="ml-4 pl-4 border-l border-slate-300 dark:border-slate-700"
             href={`https://billyebrim.org/${slug}-noon-prayer/`}
             target="_blank"
             rel="noreferrer"

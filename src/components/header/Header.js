@@ -15,9 +15,9 @@ function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-700 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
-      <div className="max-w-7xl mx-auto">
-        <div className="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 mx-4 lg:mx-0">
+    <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 border-b border-slate-200 dark:border-slate-700 bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
+      <div className="mx-auto w-11/12 md:w-10/12 lg:w-9/12">
+        <div className="py-4">
           <div className="relative flex items-center">
             <Link to="/" className="">
               🙏&nbsp;&nbsp;☎️
@@ -31,7 +31,7 @@ function Header() {
                   </li>
                 </ul>
               </nav>
-              <div className="flex items-center border-l border-slate-200 ml-6 pl-6 dark:border-slate-800">
+              <div className="flex items-center border-l border-slate-300 dark:border-slate-700 ml-6 pl-6">
                 <label className="sr-only" htmlFor="theme-toggle">
                   Theme
                 </label>
