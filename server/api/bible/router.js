@@ -13,15 +13,15 @@ const config = { headers: { "api-key": API_KEY } };
 router.get("/bibles", (req, res) => {
   const bibles = BibleCache.getBibles();
   if (bibles?.allIds?.length) {
-    return bibles;
+    res.send(bibles);
   } else {
     console.log("fetching bibles");
     axios
-      .get(`${base}/bibles`, config)
+      .get(`${base}/bibles`, { ...config, params: { language: "eng" } })
       .then((response) => {
         const bibles = response.data.data;
         BibleCache.setBibles(bibles);
-        res.send(bibles);
+        res.send(BibleCache.getBibles());
       })
       .catch((response) => {
         res.status(response.status);
@@ -39,11 +39,11 @@ router.get("/:bible/books", (req, res) => {
   } else {
     console.log("fetching books");
     axios
-      .get(`${base}/bibles/${bibleId}/books`)
+      .get(`${base}/bibles/${bibleId}/books`, config)
       .then((response) => {
         const books = response.data.data;
         BibleCache.setBooks(books);
-        res.send(books);
+        res.send(BibleCache.getBooks(bibleId));
       })
       .catch((response) => {
         res.status(response.status);
@@ -66,16 +66,19 @@ router.get("/:bible/verse/:id", (req, res) => {
       .get(
         `${base}/bibles/${bibleId}/verses/${verseId}`,
         Object.assign({}, config, {
-          "include-chapter-numbers": "false",
-          "include-verse-numbers": "false",
+          params: {
+            "include-chapter-numbers": "false",
+            "include-verse-numbers": "false",
+          },
         })
       )
       .then((response) => {
         const verse = response.data.data;
-        BibleCache.setVerse(verse);
-        res.send(verse);
+        BibleCache.setVerse(verse, verseId);
+        res.send(BibleCache.getVerse(bibleId, verseId));
       })
       .catch((response) => {
+        console.log("error getting verse", response);
         res.status(response.status);
         res.send(response.data);
       });

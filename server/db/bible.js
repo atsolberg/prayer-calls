@@ -2,7 +2,7 @@ const entityTable = () => ({ allIds: [], byId: {} });
 
 const data = {
   bibles: entityTable(),
-  bookes: entityTable(),
+  books: entityTable(),
   chapters: entityTable(),
   verses: entityTable(),
 };
@@ -78,10 +78,10 @@ const BibleCache = {
    * Set a verse in the database
    * @param {Verse} verse - the verse to store
    */
-  setVerse(verse) {
-    const id = `${verse.bibleId}.${verse.id}`;
-    data.verses.allIds.push(id);
-    data.verses.byId[id] = verse;
+  setVerse(verse, id) {
+    const vid = `${verse.bibleId}.${id}`;
+    data.verses.allIds.push(vid);
+    data.verses.byId[vid] = verse;
   },
 
   /**
