@@ -6,7 +6,7 @@ const classes = ["text-sky-500", "dark:text-sky-400", "hover:underline"];
 const A = React.forwardRef((props, ref) => {
   const { children, className = "", ...rest } = props;
   return (
-    <a ref={ref} type="button" className={cx(className, classes)} {...rest}>
+    <a ref={ref} className={cx(className, classes)} {...rest}>
       {children}
     </a>
   );

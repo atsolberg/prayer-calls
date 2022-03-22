@@ -48,7 +48,7 @@ function Details() {
             <h2 className="mb-3 mt-4 text-sky-500 dark:text-sky-400 font-bold text-xl sm:text-3xl">
               {formatFileDate(name)}
             </h2>
-            <p className="ml-auto my-4">
+            <p className="ml-auto my-4 flex items-center">
               <span className="mr-2">Links -</span>
               <A
                 href={`https://billyebrim.org/israel-call-${slug}`}
@@ -57,8 +57,8 @@ function Details() {
               >
                 Morning Call
               </A>
+              <div className="inline-block border-l border-slate-300 dark:border-slate-700 h-5 mx-3" />
               <A
-                className="ml-4 pl-4 border-l border-slate-300 dark:border-slate-700"
                 href={`https://billyebrim.org/${slug}-noon-prayer/`}
                 target="_blank"
                 rel="noreferrer"
