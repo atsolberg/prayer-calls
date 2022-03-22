@@ -57,7 +57,7 @@ function Details() {
               >
                 Morning Call
               </A>
-              <div className="inline-block border-l border-slate-300 dark:border-slate-700 h-5 mx-3" />
+              <span className="inline-block border-l border-slate-300 dark:border-slate-700 h-5 mx-3" />
               <A
                 href={`https://billyebrim.org/${slug}-noon-prayer/`}
                 target="_blank"
