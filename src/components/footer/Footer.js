@@ -3,8 +3,23 @@ function Footer() {
     <footer className="text-sm leading-6 mt-12 border-t border-slate-200 dark:border-slate-700">
       <div className="my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
         <div className="py-2 sm:py-10 sm:flex justify-between text-slate-500">
-          <div className="mb-6 sm:mb-0 sm:flex">
-            <p>Built by Solberg LLC.</p>
+          <div className="mb-6 sm:mb-0 flex items-center">
+            Built by Solberg LLC with
+            <a href="https://www.reactjs.org" target="_blank" rel="noreferrer">
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K"
+                alt=""
+                className="h-3 inline mx-1"
+              />
+            </a>{" "}
+            and
+            <a href="https://www.nodejs.org" target="_blank" rel="noreferrer">
+              <img
+                src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZmlsbD0ibm9uZSIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDE1IDE1IiB3aWR0aD0iMTUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTQgNC4yMTI4MUw3LjUgMC40MjExNDNMMSA0LjIxMjgxVjEwLjc4NzJMMi4wMDYzNCAxMS4zNzQyTDQuMDYyNjQgMTAuNTQyMkM0LjYyOTIxIDEwLjMxMyA1LjAwMDA0IDkuNzYyOSA1LjAwMDA0IDkuMTUxNzFWNEg2LjAwMDA0VjkuMTUxNzFDNi4wMDAwNCAxMC4xNzA0IDUuMzgyIDExLjA4NzEgNC40Mzc3MiAxMS40NjkyTDMuMDk4MjYgMTIuMDExMkw3LjUgMTQuNTc4OEwxNCAxMC43ODcyVjQuMjEyODFaTTcgNkM3IDQuODk1NDMgNy44OTU0MyA0IDkgNEgxMC4xNjY3QzExLjE3OTIgNCAxMiA0LjgyMDgxIDEyIDUuODMzMzNWNkgxMVY1LjgzMzMzQzExIDUuMzczMSAxMC42MjY5IDUgMTAuMTY2NyA1SDlDOC40NDc3MiA1IDggNS40NDc3MiA4IDZDOCA2LjU1MjI4IDguNDQ3NzIgNyA5IDdIMTBDMTEuMTA0NiA3IDEyIDcuODk1NDMgMTIgOUMxMiAxMC4xMDQ2IDExLjEwNDYgMTEgMTAgMTFIOUM3Ljg5NTQzIDExIDcgMTAuMTA0NiA3IDlIOEM4IDkuNTUyMjggOC40NDc3MiAxMCA5IDEwSDEwQzEwLjU1MjMgMTAgMTEgOS41NTIyOCAxMSA5QzExIDguNDQ3NzIgMTAuNTUyMyA4IDEwIDhIOUM3Ljg5NTQzIDggNyA3LjEwNDU3IDcgNloiIGZpbGw9IiM4NGJhNjQiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg=="
+                alt=""
+                className="h-3 inline ml-1"
+              />
+            </a>
           </div>
           <a
             className="flex hover:text-slate-400 dark:hover:text-slate-300"
