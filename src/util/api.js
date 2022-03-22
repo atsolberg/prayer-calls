@@ -13,12 +13,10 @@ let files = {
 export function getFiles() {
   if (files.loaded) return Promise.resolve(files);
 
-  return client({ endpoint: "http://localhost:3000/api/files" }).then(
-    (resp) => {
-      files = { ...resp.files, loaded: true };
-      return files;
-    }
-  );
+  return client({ endpoint: "/api/files" }).then((resp) => {
+    files = { ...resp.files, loaded: true };
+    return files;
+  });
 }
 
 /**
