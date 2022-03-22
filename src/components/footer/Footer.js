@@ -4,7 +4,7 @@ function Footer() {
       <div className="my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
         <div className="py-2 sm:py-10 sm:flex justify-between text-slate-500">
           <div className="mb-6 sm:mb-0 sm:flex">
-            <p>Copyright © 2022 Solberg LLC.</p>
+            <p>Built by Solberg LLC with ⚛ and ⬢.</p>
           </div>
           <a
             className="flex hover:text-slate-400 dark:hover:text-slate-300"
