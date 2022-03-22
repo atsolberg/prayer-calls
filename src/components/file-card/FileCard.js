@@ -31,7 +31,7 @@ function FileCard({ file }) {
             }}
           />
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-1/6 bg-gradient-to-b from-transparent to-slate-900" />
+        <div className="absolute bottom-0 left-0 w-full h-1/6 bg-gradient-to-b from-transparent to-white dark:to-slate-900" />
       </Link>
       <span className="absolute top-0 right-0 mr-1 mt-1 p-1 font-bold text-sky-500 dark:text-sky-400">
         {formatFileDate(name)}
