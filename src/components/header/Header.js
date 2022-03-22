@@ -15,7 +15,7 @@ function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 border-b border-slate-200 dark:border-slate-700 bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
+    <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 border-b border-slate-200 dark:border-slate-700 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
       <div className="mx-auto w-11/12 md:w-10/12 lg:w-9/12">
         <div className="py-4">
           <div className="relative flex items-center">
