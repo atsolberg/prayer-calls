@@ -15,7 +15,6 @@ router.get("/bibles", (req, res) => {
   if (bibles?.allIds?.length) {
     res.send(bibles);
   } else {
-    console.log("fetching bibles");
     axios
       .get(`${base}/bibles`, { ...config, params: { language: "eng" } })
       .then((response) => {
@@ -37,7 +36,6 @@ router.get("/:bible/books", (req, res) => {
   if (books?.length) {
     res.send(books);
   } else {
-    console.log("fetching books");
     axios
       .get(`${base}/bibles/${bibleId}/books`, config)
       .then((response) => {
@@ -56,19 +54,19 @@ router.get("/:bible/books", (req, res) => {
 router.get("/:bible/verse/:id", (req, res) => {
   const verseId = req.params.id;
   const bibleId = req.params.bible;
+  const isRange = verseId.includes("-");
 
   const verse = BibleCache.getVerse(bibleId, verseId);
   if (verse) {
     res.send(verse);
   } else {
-    console.log("fetching verse");
     axios
       .get(
         `${base}/bibles/${bibleId}/verses/${verseId}`,
         Object.assign({}, config, {
           params: {
-            "include-chapter-numbers": "false",
-            "include-verse-numbers": "false",
+            "include-chapter-numbers": false,
+            "include-verse-numbers": isRange,
           },
         })
       )

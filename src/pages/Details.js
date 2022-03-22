@@ -9,6 +9,8 @@ import { convertMdToHtml } from "../util/markdown";
 import Modal from "../components/modal/Modal";
 import Button from "../components/button/Button";
 import A from "../components/anchor/A";
+import PrayerCall from "../components/prayer-call/PrayerCall";
+import BiblesProvider from "../providers/BiblesProvider";
 
 function getCallSlug(name) {
   if (!name) return "";
@@ -24,8 +26,8 @@ function Details() {
   const [loading, setLoading] = useState(true);
   const { name, contents } = file;
   const slug = getCallSlug(name);
-  console.log(`slug: `, slug);
 
+  // Fetch markdown file
   useEffect(() => {
     async function fetchData() {
       const res = await getFile(id);
@@ -36,56 +38,62 @@ function Details() {
     fetchData();
   }, [id]);
 
-  return loading ? (
-    <h2>Loading...</h2>
-  ) : (
-    <div className="my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
-      <div className="sm:flex items-center">
-        <h2 className="mb-3 mt-4 text-sky-500 dark:text-sky-400 font-bold text-xl sm:text-3xl">
-          {formatFileDate(name)}
-        </h2>
-        <p className="ml-auto my-4">
-          <span className="mr-2">Links -</span>
-          <A
-            href={`https://billyebrim.org/israel-call-${slug}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Morning Call
-          </A>
-          <A
-            className="ml-4 pl-4 border-l border-slate-300 dark:border-slate-700"
-            href={`https://billyebrim.org/${slug}-noon-prayer/`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Noon Call
-          </A>
-          <Button
-            className="float-right hidden"
-            onClick={() => setShowModal(true)}
-          >
-            Share
-          </Button>
-        </p>
-      </div>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: convertMdToHtml(contents).outerHTML,
-        }}
-      />
-      {showModal ? (
-        <Modal>
-          <h3>Test Modal</h3>
-          <div>
-            <p>This is a test modal</p>
-            <button type="button" onClick={() => setShowModal(false)}>
-              Ok
-            </button>
+  return (
+    <BiblesProvider>
+      {loading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <div className="my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
+          <div className="sm:flex items-center">
+            <h2 className="mb-3 mt-4 text-sky-500 dark:text-sky-400 font-bold text-xl sm:text-3xl">
+              {formatFileDate(name)}
+            </h2>
+            <p className="ml-auto my-4">
+              <span className="mr-2">Links -</span>
+              <A
+                href={`https://billyebrim.org/israel-call-${slug}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Morning Call
+              </A>
+              <A
+                className="ml-4 pl-4 border-l border-slate-300 dark:border-slate-700"
+                href={`https://billyebrim.org/${slug}-noon-prayer/`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Noon Call
+              </A>
+              <Button
+                className="float-right hidden"
+                onClick={() => setShowModal(true)}
+              >
+                Share
+              </Button>
+            </p>
           </div>
-        </Modal>
-      ) : null}
-    </div>
+          <PrayerCall content={contents} />
+          <div
+            className="hidden"
+            dangerouslySetInnerHTML={{
+              __html: convertMdToHtml(contents).outerHTML,
+            }}
+          />
+          {showModal ? (
+            <Modal>
+              <h3>Test Modal</h3>
+              <div>
+                <p>This is a test modal</p>
+                <button type="button" onClick={() => setShowModal(false)}>
+                  Ok
+                </button>
+              </div>
+            </Modal>
+          ) : null}
+        </div>
+      )}
+    </BiblesProvider>
   );
 }
 
