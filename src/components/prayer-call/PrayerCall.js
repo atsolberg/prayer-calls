@@ -6,6 +6,8 @@ import { books } from "../../util/constants";
 import { getVerse } from "../../util/api";
 import { useBibles } from "../../providers/BiblesProvider";
 
+import A from "../anchor/A";
+
 const vStyles = css`
   max-width: 500px;
   .v {
@@ -56,14 +58,14 @@ function Verse(props) {
   return (
     <div className="verse">
       <p className="py-1">
-        <a
+        <A
           href={`https://my.bible.com/bible/1/${book?.id}.${chapter}.KJV`}
           className="text-sky-500 dark:text-sky-400"
           target="_blank"
           rel="noreferrer"
         >
           {verse}
-        </a>
+        </A>
       </p>
       <blockquote
         css={vStyles}
