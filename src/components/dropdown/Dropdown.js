@@ -63,8 +63,8 @@ const DrowpdownPropTypes = {
   label: string, // sr only text
   placeholder: string, // button text when nothing selected
   onSelect: func, // fire on selection change
-  labeler: func, // used to render button text, recieves the selected item
-  Item: oneOfType([node, func]), // Component to render an list item, recieves item, selected, first, last as props
+  labeler: func, // used to render button text, receives the selected item
+  Item: oneOfType([node, func]), // Component to render an list item, receives item, selected, first, last as props
   drop: oneOf(["left" /* default */, "right"]),
   size: oneOf(["sm", "md" /* default */, "lg"]),
   overrides: shape({ button: any, menu: any }), // class list overrides
