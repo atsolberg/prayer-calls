@@ -10,7 +10,6 @@ import Modal from "../components/modal/Modal";
 import Button from "../components/button/Button";
 import A from "../components/anchor/A";
 import PrayerCall from "../components/prayer-call/PrayerCall";
-import BiblesProvider from "../providers/BiblesProvider";
 
 function getCallSlug(name) {
   if (!name) return "";
@@ -39,7 +38,7 @@ function Details() {
   }, [id]);
 
   return (
-    <BiblesProvider>
+    <>
       {loading ? (
         <h2>Loading...</h2>
       ) : (
@@ -93,7 +92,7 @@ function Details() {
           ) : null}
         </div>
       )}
-    </BiblesProvider>
+    </>
   );
 }
 

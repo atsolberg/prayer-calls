@@ -31,8 +31,11 @@ export function getFile(id) {
   });
 }
 
-export function getBibles() {
-  return client({ endpoint: "/api/bible/bibles" });
+export function getBibles({ filter, uncached } = {}) {
+  const params = {};
+  if (filter) params.filter = true;
+  if (uncached) params.uncached = true;
+  return client({ endpoint: "/api/bible/bibles", params });
 }
 
 /**
@@ -40,12 +43,12 @@ export function getBibles() {
  * the ones we will use.
  */
 export function getBooks() {
-  return client({ endpoint: "/api/bible/de4e12af7f28f599-02/books" });
+  return client({ endpoint: "/api/bible/de4e12af7f28f599-01/books" });
 }
 
 /**
  * Get a verse from a specific bible edition
- * @property {string} bibleId - i.e. "de4e12af7f28f599-02"
+ * @property {string} bibleId - i.e. "de4e12af7f28f599-01"
  * @property {string} verseId - i.e. "GEN.1.1"
  * @returns {Promise<Response>}
  */

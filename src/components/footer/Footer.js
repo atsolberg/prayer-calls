@@ -1,8 +1,13 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <footer className="text-sm leading-6 mt-12 border-t border-slate-200 dark:border-slate-700">
       <div className="my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
-        <div className="py-2 sm:py-10 sm:flex justify-between text-slate-500">
+        <div className="pt-2 sm:pt-6 sm:flex justify-between text-sky-500 dark:text-sky-500 font-bold">
+          <Link to="/about">About</Link>
+        </div>
+        <div className="py-2 mb-4 sm:py-10 sm:flex justify-between text-slate-500">
           <div className="mb-6 sm:mb-0 flex items-center">
             Built by Solberg LLC with
             <a href="https://www.reactjs.org" target="_blank" rel="noreferrer">

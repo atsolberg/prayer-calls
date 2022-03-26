@@ -1,6 +1,6 @@
 /**
  * @typedef Bible
- * @property {string} id - i.e. "de4e12af7f28f599-02"
+ * @property {string} id - i.e. "de4e12af7f28f599-01"
  * @property {string} dblId - i.e. "de4e12af7f28f599"
  * @property {*} [dblId] - i.e. null
  * @property {string} name - i.e. "King James (Authorised) Version"

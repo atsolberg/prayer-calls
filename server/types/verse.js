@@ -3,7 +3,7 @@
  * @property {string} id - i.e. "GEN.1.1"
  * @property {string} orgId - i.e. "GEN.1.1"
  * @property {string} chapterId - i.e. "GEN.1"
- * @property {string} bibleId - i.e. "de4e12af7f28f599-02"
+ * @property {string} bibleId - i.e. "de4e12af7f28f599-01"
  * @property {string} reference - i.e. "Genesis 1:1"
  * @property {string} content - i.e. "<p class=\"p\">In the beginning God created the heaven and the earth. </p>",
  * @property {number} verseCount - i.e. 1

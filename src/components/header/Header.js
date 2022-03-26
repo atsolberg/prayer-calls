@@ -1,7 +1,26 @@
 import { Link } from "react-router-dom";
+import cx from "classnames";
+
 import q from "../../util/element";
+import { useBibles } from "../../providers/BiblesProvider";
+
+import Dropdown from "../dropdown/Dropdown";
+
+function BibleMenuItem({ item, ctx }) {
+  if (ctx === "button") return item.abbreviationLocal;
+
+  return (
+    <div>
+      <div className="py-2 border-dashed border-b border-1 border-slate-500">
+        {item.abbreviationLocal}
+      </div>
+      <div className="py-2">{item.nameLocal}</div>
+    </div>
+  );
+}
 
 function Header() {
+  const [bible, setBible, bibles] = useBibles();
   function onTheme() {
     const root = q("html");
     const isDark = q.is(root, ".dark");
@@ -17,7 +36,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 border-b border-slate-200 dark:border-slate-700 dark:border-slate-50/[0.06] bg-white supports-backdrop-blur:bg-white/95 dark:bg-slate-900/75">
       <div className="mx-auto w-11/12 md:w-10/12 lg:w-9/12">
-        <div className="py-4">
+        <div className="py-3">
           <div className="relative flex items-center">
             <Link to="/" className="">
               🙏&nbsp;&nbsp;☎️
@@ -25,13 +44,38 @@ function Header() {
 
             <div className="relative flex items-center ml-auto">
               <nav className="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
-                <ul className="flex space-x-8">
+                {/* Nav Links */}
+                <ul className="flex space-x-8 items-center">
                   <li>
-                    <Link to="/about">About</Link>
+                    <Dropdown
+                      placeholder="Bible..."
+                      size="sm"
+                      drop="right"
+                      overrides={{ button: "dark:!ring-0 font-semibold" }}
+                      items={Object.values(bibles.byId)}
+                      initial={bibles.byId[bible]}
+                      onSelect={({ selectedItem }) => {
+                        setBible(selectedItem);
+                      }}
+                      valuer={(item) => item.id}
+                      labeler={BibleMenuItem}
+                    />
                   </li>
                 </ul>
               </nav>
-              <div className="flex items-center border-l border-slate-300 dark:border-slate-700 ml-6 pl-6">
+
+              {/* Theme Toggle */}
+              <div
+                className={cx([
+                  "flex",
+                  "items-center",
+                  "border-l",
+                  "border-slate-300",
+                  "dark:border-slate-700",
+                  "ml-2 sm:ml-4",
+                  "pl-3 sm:pl-6",
+                ])}
+              >
                 <label className="sr-only" htmlFor="theme-toggle">
                   Theme
                 </label>

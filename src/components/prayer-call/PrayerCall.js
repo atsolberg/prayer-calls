@@ -69,7 +69,7 @@ function Verse(props) {
       </p>
       <blockquote
         css={vStyles}
-        className="m-2 p-4 inset-0 dark:bg-slate-700/25 rounded"
+        className="m-2 p-4 inset-0 bg-slate-300/25 dark:bg-slate-700/25 rounded"
         dangerouslySetInnerHTML={{ __html: scripture }}
       />
     </div>

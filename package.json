@@ -55,6 +55,7 @@
     "axios": "^0.26.1",
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
+    "downshift": "^6.1.7",
     "express": "^4.17.3",
     "js-cookie": "^3.0.1",
     "morgan": "^1.10.0",

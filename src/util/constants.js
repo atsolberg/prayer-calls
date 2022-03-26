@@ -106,3 +106,11 @@ export const books = [
   { id: "JUD", name: "Jude" },
   { id: "REV", name: "Revelation" },
 ];
+
+export const bibles_versions = [
+  { abbr: "FBV", id: "65eec8e0b60e656b-01" },
+  { abbr: "KJV", id: "de4e12af7f28f599-01" },
+  { abbr: "LSV", id: "01b29f4b342acc35-01" },
+  { abbr: "ASV", id: "06125adad2d5898a-01" },
+  { abbr: "WEB", id: "9879dbb7cfe39e4d-01" },
+];

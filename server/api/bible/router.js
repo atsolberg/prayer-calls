@@ -1,6 +1,8 @@
 import express from "express";
 import axios from "axios";
 import BibleCache from "../../db/bible";
+import { bibles_versions } from "../../../src/util/constants";
+import { entityTable } from "../../db/util";
 
 const router = express.Router();
 const base = "https://api.scripture.api.bible/v1";
@@ -9,18 +11,40 @@ const base = "https://api.scripture.api.bible/v1";
 const API_KEY = "696aaf815b655732b79bcba7e67311b2";
 const config = { headers: { "api-key": API_KEY } };
 
+function cleanNames(bibles) {
+  bibles.forEach(
+    (b) => (b.nameLocal = b.nameLocal.replace("The Holy Bible, ", ""))
+  );
+}
+
 // Get Bibles
 router.get("/bibles", (req, res) => {
+  const filter = Object.hasOwn(req.query, "filter");
+  const uncached = Object.hasOwn(req.query, "uncached");
   const bibles = BibleCache.getBibles();
-  if (bibles?.allIds?.length) {
+  if (!uncached && bibles?.allIds?.length) {
     res.send(bibles);
   } else {
     axios
       .get(`${base}/bibles`, { ...config, params: { language: "eng" } })
       .then((response) => {
-        const bibles = response.data.data;
-        BibleCache.setBibles(bibles);
-        res.send(BibleCache.getBibles());
+        let bibles = response.data.data;
+        cleanNames(bibles);
+        if (filter) {
+          let ids = bibles_versions.map((bv) => bv.id);
+          bibles = bibles.filter((b) => ids.includes(b.id));
+        }
+        if (uncached) {
+          const table = entityTable();
+          bibles.forEach((b) => {
+            table.allIds.push(b.id);
+            table.byId[b.id] = b;
+          });
+          res.send(table);
+        } else {
+          BibleCache.setBibles(bibles);
+          res.send(BibleCache.getBibles());
+        }
       })
       .catch((response) => {
         res.status(response.status);

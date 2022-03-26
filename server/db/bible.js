@@ -1,4 +1,4 @@
-const entityTable = () => ({ allIds: [], byId: {} });
+import { entityTable } from "./util";
 
 const data = {
   bibles: entityTable(),
@@ -29,7 +29,7 @@ const BibleCache = {
 
   /**
    * Return a specific bible edition
-   * @param {string} id - i.e. "de4e12af7f28f599-02
+   * @param {string} id - i.e. "de4e12af7f28f599-01
    * @returns {Bible|null}
    */
   getBible(id) {
@@ -53,7 +53,7 @@ const BibleCache = {
 
   /**
    * Get all books for a bible edition
-   * @param {string} bibleId - i.e. "de4e12af7f28f599-02
+   * @param {string} bibleId - i.e. "de4e12af7f28f599-01
    * @returns {Bible[]}
    */
   getBooks(bibleId) {
@@ -64,7 +64,7 @@ const BibleCache = {
 
   /**
    * Get a book from the database
-   * @param {string} bibleId - i.e. "de4e12af7f28f599-02"
+   * @param {string} bibleId - i.e. "de4e12af7f28f599-01"
    * @param {string} bookId - i.e. "GEN.1.1"
    * @returns {Book|null}
    */
@@ -86,7 +86,7 @@ const BibleCache = {
 
   /**
    * Get a verse by id for a specific bible edition
-   * @param {string} bibleId - i.e. "de4e12af7f28f599-02"
+   * @param {string} bibleId - i.e. "de4e12af7f28f599-01"
    * @param {string} verseId - i.e. "GEN.1.1"
    * @returns {Verse|null}
    */

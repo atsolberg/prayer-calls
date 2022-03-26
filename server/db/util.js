@@ -23,3 +23,7 @@ files.allIds.sort().reverse();
 export function getFileDirectory() {
   return files;
 }
+
+export function entityTable() {
+  return { allIds: [], byId: {} };
+}
