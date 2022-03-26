@@ -20,10 +20,12 @@ if (cookie_value) {
   try {
     initial = JSON.parse(cookie_value);
   } catch (e) {
+    initial = default_bible;
+    Cookies.set(cookie_name, JSON.stringify(initial));
     console.log("Error parsing bible cookie", cookie_value);
   }
 } else {
-  Cookies.set(cookie_name, initial);
+  Cookies.set(cookie_name, JSON.stringify(initial));
 }
 
 const BiblesContext = React.createContext();
