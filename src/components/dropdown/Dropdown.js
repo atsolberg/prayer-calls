@@ -30,7 +30,6 @@ const DropdownMenuItem = React.forwardRef((props, ref) => {
           "cursor-pointer",
           "px-3",
           "py-2",
-          "hover:bg-gray-300 hover:bg-gray-700",
           "border-1",
           "border-b",
           "border-slate-700",

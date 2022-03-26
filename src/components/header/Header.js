@@ -72,14 +72,19 @@ function Header() {
                   "border-l",
                   "border-slate-300",
                   "dark:border-slate-700",
-                  "ml-2 sm:ml-4",
-                  "pl-3 sm:pl-6",
+                  "ml-2 sm:ml-3",
+                  "pl-3 sm:pl-4",
                 ])}
               >
                 <label className="sr-only" htmlFor="theme-toggle">
                   Theme
                 </label>
-                <button type="button" id="theme-toggle" onClick={onTheme}>
+                <button
+                  type="button"
+                  id="theme-toggle"
+                  onClick={onTheme}
+                  className="p-1 rounded"
+                >
                   <span className="dark:hidden">
                     <svg
                       viewBox="0 0 24 24"
