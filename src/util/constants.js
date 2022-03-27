@@ -107,6 +107,10 @@ export const books = [
   { id: "REV", name: "Revelation" },
 ];
 
+/**
+ * Preferred bible versions
+ * @type {[ { id: string, abbr: string }* ]}
+ */
 export const bibles_versions = [
   { abbr: "FBV", id: "65eec8e0b60e656b-01" },
   { abbr: "KJV", id: "de4e12af7f28f599-01" },
