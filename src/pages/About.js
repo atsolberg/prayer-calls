@@ -14,7 +14,8 @@ function About() {
           target="_blank"
           rel="noreferrer"
         >
-          https://billyebrim.org
+          https://billyebrim.org{" "}
+          <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
         </A>
         :
       </p>
@@ -25,7 +26,8 @@ function About() {
             target="_blank"
             rel="noreferrer"
           >
-            Morning Prayer
+            Morning Prayer{" "}
+            <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
           </A>
           <A
             href="https://billyebrim.org/israel-prayer-call/"
@@ -33,7 +35,8 @@ function About() {
             rel="noreferrer"
             className="ml-4 pl-4 border-l border-slate-400 dark:border-slate-200/25"
           >
-            Archive
+            Archive{" "}
+            <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
           </A>
         </p>
         <p className="sm:ml-20">
@@ -42,7 +45,8 @@ function About() {
             target="_blank"
             rel="noreferrer"
           >
-            Noon Prayer
+            Noon Prayer{" "}
+            <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
           </A>
           <A
             href="https://billyebrim.org/wednesday-noon-prayer/"
@@ -50,7 +54,8 @@ function About() {
             rel="noreferrer"
             className="ml-4 pl-4 border-l border-slate-400 dark:border-slate-200/25"
           >
-            Archive
+            Archive{" "}
+            <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
           </A>
         </p>
       </div>
@@ -66,7 +71,10 @@ function About() {
       <h4 className="text-xl mt-3 font-bold">Contact</h4>
       <p>
         If you would like to send feedback or report a bug, I can be reached at{" "}
-        <A href="mailto:aaron@prayercalls.net">aaron@prayercalls.net</A>
+        <A href="mailto:aaron@prayercalls.net">
+          aaron@prayercalls.net{" "}
+          <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
+        </A>
       </p>
     </div>
   );
