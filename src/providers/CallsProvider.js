@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 
+import { indexCallText } from "../util/prayer-call";
 import { getFiles } from "../util/api";
 
 const CallsContext = React.createContext();
@@ -13,7 +14,7 @@ function CallsProvider(props) {
   useEffect(() => {
     getFiles()
       .then((results) => {
-        setCalls(results);
+        setCalls(indexCallText(results));
         setLoaded(true);
       })
       .catch((err) => console.log("Error fetching call files", err));
