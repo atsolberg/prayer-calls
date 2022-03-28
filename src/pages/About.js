@@ -54,6 +54,20 @@ function About() {
           </A>
         </p>
       </div>
+
+      <h4 className="text-xl mt-3 font-bold">Todo List</h4>
+      <ul>
+        <li>- Get a logo?</li>
+        <li>- Add preview to search</li>
+        <li>- Get more bible versions (ESV, NASV, AMP, NKJV)</li>
+        <li>- Start archiving backwards, December, November, ect</li>
+      </ul>
+
+      <h4 className="text-xl mt-3 font-bold">Contact</h4>
+      <p>
+        If you would like to send feedback or report a bug, I can be reached at{" "}
+        <A href="mailto:aaron@prayercalls.net">aaron@prayercalls.net</A>
+      </p>
     </div>
   );
 }
