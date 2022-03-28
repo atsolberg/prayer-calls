@@ -13,11 +13,11 @@ function About() {
           href="https://billyebrim.org/weekly-israel-prayer-call/"
           target="_blank"
           rel="noreferrer"
+          className="whitespace-nowrap"
         >
-          https://billyebrim.org{" "}
+          billyebrim.org{" "}
           <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
         </A>
-        :
       </p>
       <div className="sm:flex">
         <p className="mb-2">

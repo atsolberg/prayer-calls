@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="text-sm leading-6 mt-12 border-t border-slate-200 dark:border-slate-700">
-      <div className="my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
+      <div className="mt-3 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
         <div className="pt-2 sm:pt-6 sm:flex justify-between text-sky-500 dark:text-sky-500 font-bold">
           <Link to="/about">About</Link>
         </div>
