@@ -29,16 +29,6 @@ export function indexCallText(table) {
     }
     return a.lineNum - b.lineNum;
   });
-  line_data.forEach((ld) => {
-    console.log(
-      `date:`,
-      ld.date,
-      "line#:",
-      ld.lineNum,
-      "timestamp:",
-      ld.timestamp
-    );
-  });
 
-  return table;
+  return { ...table, line_data };
 }

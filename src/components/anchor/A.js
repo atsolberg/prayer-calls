@@ -4,11 +4,12 @@ import cx from "classnames";
 const classes = ["text-sky-500", "hover:underline"];
 
 const A = React.forwardRef((props, ref) => {
-  const { children, className = "", ...rest } = props;
+  const { children, className = "", as = "a", ...rest } = props;
+  const Comp = as;
   return (
-    <a ref={ref} className={cx(className, classes)} {...rest}>
+    <Comp ref={ref} className={cx(className, classes)} {...rest}>
       {children}
-    </a>
+    </Comp>
   );
 });
 A.displayName = "A";

@@ -124,17 +124,17 @@ function Header() {
                 labeler={BibleMenuItem}
               />
 
-              {/*<Divider />*/}
+              <Divider />
 
-              {/*/!* Search Toggle *!/*/}
-              {/*<Btn*/}
-              {/*  id="search-toggle"*/}
-              {/*  onClick={onSearch}*/}
-              {/*  className="p-1 rounded -ml-2 -mr-2"*/}
-              {/*>*/}
-              {/*  <span className="sr-only">Search</span>*/}
-              {/*  <Magnifier className="w-6 h-6 text-sky-500" />*/}
-              {/*</Btn>*/}
+              {/* Search Toggle */}
+              <Btn
+                id="search-toggle"
+                onClick={onSearch}
+                className="p-1 rounded -ml-2 -mr-2"
+              >
+                <span className="sr-only">Search</span>
+                <Magnifier className="w-6 h-6 text-sky-500" />
+              </Btn>
 
               <Divider />
 
