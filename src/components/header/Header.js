@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cx from "classnames";
 
@@ -5,6 +6,11 @@ import q from "../../util/element";
 import { useBibles } from "../../providers/BiblesProvider";
 
 import Dropdown from "../dropdown/Dropdown";
+import Search from "../search/Search";
+import Sun from "../icons/Sun";
+import Moon from "../icons/Moon";
+import Magnifier from "../icons/Magnifier";
+import { Btn } from "../button/Button";
 
 function BibleMenuItem({ item, ctx }) {
   if (ctx === "button") return item.abbreviationLocal;
@@ -19,8 +25,16 @@ function BibleMenuItem({ item, ctx }) {
   );
 }
 
+function Divider() {
+  return (
+    <div className="h-5 mx-4 border-1 border-r border-slate-300 dark:border-slate-700" />
+  );
+}
+
 function Header() {
   const [bible, setBible, bibles] = useBibles();
+  const [searching, setSearching] = useState(false);
+
   function onTheme() {
     const root = q("html");
     const isDark = q.is(root, ".dark");
@@ -33,8 +47,46 @@ function Header() {
     }
   }
 
+  function onSearch() {
+    setSearching(!searching);
+  }
+  function onHideSearch() {
+    setSearching(false);
+  }
+
+  // Handle open(⌘ + k), close(esc) on keyboard
+  useEffect(() => {
+    function keydown({ metaKey, ctrlKey, mod = metaKey || ctrlKey, keyCode }) {
+      if (mod && keyCode === 75 /* k */) setSearching(true);
+      if (searching && keyCode === 27 /* esc */) setSearching(false);
+    }
+    function click({ target }) {
+      if (searching && !q.closest(target, "#search-modal")) setSearching(false);
+    }
+
+    return q.addListeners(document, { keydown, click });
+  }, [searching]);
+
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 border-b border-slate-200 dark:border-slate-700 dark:border-slate-50/[0.06] bg-white supports-backdrop-blur:bg-white/95 dark:bg-slate-900/75">
+    <header
+      className={cx([
+        "sticky",
+        "w-full",
+        "top-0",
+        "z-40",
+        "transition-colors",
+        "duration-500",
+
+        "border-b",
+        "border-slate-200",
+        "dark:border-slate-700",
+        "dark:border-slate-50/[0.06]",
+
+        "backdrop-blur",
+        "bg-white/75",
+        "dark:bg-slate-900/75",
+      ])}
+    >
       <div className="mx-auto w-11/12 md:w-10/12 lg:w-9/12">
         <div className="py-3">
           <div className="relative flex items-center">
@@ -43,93 +95,64 @@ function Header() {
             </Link>
 
             <div className="relative flex items-center ml-auto">
-              <nav className="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
-                {/* Nav Links */}
-                <ul className="flex space-x-8 items-center">
-                  <li>
-                    <Dropdown
-                      placeholder="Bible..."
-                      size="sm"
-                      drop="right"
-                      overrides={{ button: "dark:!ring-0 font-semibold" }}
-                      items={Object.values(bibles.byId)}
-                      initial={bibles.byId[bible]}
-                      onSelect={({ selectedItem }) => {
-                        setBible(selectedItem);
-                      }}
-                      valuer={(item) => item.id}
-                      labeler={BibleMenuItem}
-                    />
-                  </li>
-                </ul>
-              </nav>
+              <div className="hidden md:contents">
+                <nav className="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
+                  {/* Nav Links */}
+                  <ul className="flex space-x-8 items-center">
+                    <li>
+                      <Link className="hover:text-sky-500" to="/about">
+                        About
+                      </Link>
+                    </li>
+                  </ul>
+                </nav>
+
+                <Divider />
+              </div>
+
+              <Dropdown
+                placeholder="Bible..."
+                size="sm"
+                drop="right"
+                overrides={{ button: "dark:!ring-0" }}
+                items={Object.values(bibles.byId)}
+                initial={bibles.byId[bible]}
+                onSelect={({ selectedItem }) => {
+                  setBible(selectedItem);
+                }}
+                valuer={(item) => item.id}
+                labeler={BibleMenuItem}
+              />
+
+              {/*<Divider />*/}
+
+              {/*/!* Search Toggle *!/*/}
+              {/*<Btn*/}
+              {/*  id="search-toggle"*/}
+              {/*  onClick={onSearch}*/}
+              {/*  className="p-1 rounded -ml-2 -mr-2"*/}
+              {/*>*/}
+              {/*  <span className="sr-only">Search</span>*/}
+              {/*  <Magnifier className="w-6 h-6 text-sky-500" />*/}
+              {/*</Btn>*/}
+
+              <Divider />
 
               {/* Theme Toggle */}
-              <div
-                className={cx([
-                  "flex",
-                  "items-center",
-                  "border-l",
-                  "border-slate-300",
-                  "dark:border-slate-700",
-                  "ml-2 sm:ml-3",
-                  "pl-3 sm:pl-4",
-                ])}
+              <Btn
+                id="theme-toggle"
+                onClick={onTheme}
+                className="p-1 rounded -ml-2"
               >
-                <label className="sr-only" htmlFor="theme-toggle">
-                  Theme
-                </label>
-                <button
-                  type="button"
-                  id="theme-toggle"
-                  onClick={onTheme}
-                  className="p-1 rounded"
-                >
-                  <span className="dark:hidden">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                        className="stroke-slate-400 dark:stroke-slate-500"
-                      ></path>
-                      <path
-                        d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836"
-                        className="stroke-slate-400 dark:stroke-slate-500"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="hidden dark:inline">
-                    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"
-                        className="fill-transparent"
-                      />
-                      <path
-                        d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z"
-                        className="fill-slate-400 dark:fill-slate-500"
-                      />
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z"
-                        className="fill-slate-400 dark:fill-slate-500"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
+                <span className="sr-only">Theme</span>
+                <Sun className="dark:hidden w-6 h-6 text-sky-500" />
+                <Moon className="hidden dark:inline w-6 h-6 text-sky-500" />
+              </Btn>
             </div>
           </div>
         </div>
       </div>
+      <Search id="search-modal" active={searching} onHide={onHideSearch} />
     </header>
   );
 }

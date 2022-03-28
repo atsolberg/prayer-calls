@@ -27,4 +27,17 @@ const Button = React.forwardRef((props, ref) => {
 });
 Button.displayName = "Button";
 
+/**
+ * When you just need an unstyled button
+ */
+export const Btn = React.forwardRef((props, ref) => {
+  const { children, ...rest } = props;
+  return (
+    <button ref={ref} type="button" {...rest}>
+      {children}
+    </button>
+  );
+});
+Btn.displayName = "Btn";
+
 export default Button;

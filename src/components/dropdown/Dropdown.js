@@ -34,8 +34,11 @@ const DropdownMenuItem = React.forwardRef((props, ref) => {
           "border-b",
           "border-slate-700",
           "last:border-b-0",
+          "hover:text-slate-900",
+          "hover:dark:text-white",
         ],
-        { "bg-gray-300 dark:bg-gray-700": selected || highlighted }
+        { "bg-slate-50 dark:bg-slate-600/30": highlighted },
+        { "text-sky-500": selected }
       )}
       {...rest}
     >
@@ -74,7 +77,7 @@ const Dropdown = React.forwardRef((props, ref) => {
   const { overrides = dfs.overrides, size = dfs.size } = props;
   const { items, onSelect = dfs.onSelect, drop = dfs.drop } = props;
   const { labeler = dfs.labeler, valuer = dfs.valuer } = props;
-  const { initial, Item = dfs.Item } = props;
+  const { initial, Item = dfs.Item, className } = props;
   const classes = { ...dfs.overrides, ...overrides };
 
   const {
@@ -93,7 +96,7 @@ const Dropdown = React.forwardRef((props, ref) => {
   });
 
   return (
-    <div ref={ref} className="dropdown inline-block relative">
+    <div ref={ref} className={cx("dropdown inline-block relative", className)}>
       <label className="sr-only" {...getLabelProps()}>
         {label}
       </label>
@@ -102,17 +105,18 @@ const Dropdown = React.forwardRef((props, ref) => {
         type="button"
         className={cx(
           [
-            "inline-flex",
+            "leading-5",
+            "font-semibold",
+            "bg-slate-400/10",
+            "rounded-full",
+            "flex",
             "items-center",
-            "rounded-md",
-            "bg-slate-50",
-            "dark:bg-transparent",
-            "dark:text-slate-300",
-            "dark:ring-1",
-            "dark:ring-slate-700",
+            "space-x-2",
+            "hover:bg-slate-400/20",
+            "dark:highlight-white/5",
           ],
           {
-            "text-sm px-2 py-1": size === "sm",
+            "text-xs px-3 py-1": size === "sm",
             "text-md px-3 py-2": size === "md",
             "text-lg px-4 py-3": size === "lg",
           },
@@ -134,9 +138,11 @@ const Dropdown = React.forwardRef((props, ref) => {
         className={cx(
           [
             "dropdown-menu",
-            "overflow-hidden",
             "absolute",
+            "top-full",
+            "overflow-hidden",
             "text-gray-600 dark:text-gray-400",
+            "font-semibold",
             "mt-1",
             "rounded-md",
             "bg-slate-50 dark:bg-slate-800",
@@ -152,7 +158,7 @@ const Dropdown = React.forwardRef((props, ref) => {
           <Item
             key={`${item}${index}`}
             item={item}
-            selected={item === selectedItem}
+            selected={valuer(item) === valuer(selectedItem)}
             highlighted={highlightedIndex === index}
             {...getItemProps({ item, index })}
           >

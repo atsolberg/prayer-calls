@@ -60,7 +60,7 @@ function Verse(props) {
       <p className="py-1">
         <A
           href={`https://my.bible.com/bible/1/${book?.id}.${chapter}.KJV`}
-          className="text-sky-500 dark:text-sky-400"
+          className="text-sky-500"
           target="_blank"
           rel="noreferrer"
         >
@@ -83,7 +83,7 @@ function PrayerCall({ content }) {
     .filter(Boolean);
 
   return (
-    <div>
+    <div className="space-y-1">
       {lines.map((l, i) => {
         const key = `${l}-${i}`;
         return l.startsWith("_") ? (

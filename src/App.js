@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import BiblesProvider from "./providers/BiblesProvider";
+import AppProviders from "./providers/AppProviders";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
@@ -10,11 +10,14 @@ import About from "./pages/About";
 import Links from "./pages/Links";
 import Bibles from "./pages/Bibles";
 
+/**
+ * Main app file, rendered on both the server and the client
+ */
 function App() {
   return (
     <StrictMode>
       <main>
-        <BiblesProvider>
+        <AppProviders>
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -24,7 +27,7 @@ function App() {
             <Route path="/bibles" element={<Bibles />} />
           </Routes>
           <Footer />
-        </BiblesProvider>
+        </AppProviders>
       </main>
     </StrictMode>
   );

@@ -1,6 +1,4 @@
 import A from "../components/anchor/A";
-import Dropdown from "../components/dropdown/Dropdown";
-import cx from "classnames";
 
 const links = [
   {
@@ -171,85 +169,6 @@ const links = [
 function Links() {
   return (
     <div className="my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
-      <div>
-        <h3>ComboBox Test</h3>
-        <Dropdown
-          size="sm"
-          initial="green"
-          items={[
-            "red",
-            "green",
-            "blue",
-            "orange",
-            "white",
-            "black",
-            "pink is really the best",
-          ]}
-          onSelect={(item) => console.log(`item selected`, item)}
-        />
-        <Dropdown
-          items={[
-            "red",
-            "green",
-            "blue",
-            "orange",
-            "white",
-            "black",
-            "pink is really the best",
-          ]}
-          onSelect={(item) => console.log(`item selected`, item)}
-        />
-        <Dropdown
-          size="lg"
-          items={[
-            "red",
-            "green",
-            "blue",
-            "orange",
-            "white",
-            "black",
-            "pink is really the best",
-          ]}
-          onSelect={(item) => console.log(`item selected`, item)}
-        />
-        <Dropdown
-          drop="right"
-          items={[
-            { id: "red", label: "Red" },
-            { id: "green", label: "Green" },
-            { id: "blue", label: "Blue" },
-            { id: "orange", label: "Orange" },
-            { id: "white", label: "White" },
-            { id: "black", label: "Black" },
-            { id: "pink is really the best", label: "Pink!" },
-          ]}
-          onSelect={(item) => console.log(`item selected`, item)}
-          valuer={(item) => item.id}
-          labeler={(item) => item.label}
-          Item={({ item, selected, highlighted, ...rest }) => (
-            <li
-              className={cx(
-                [
-                  "block",
-                  "whitespace-nowrap",
-                  "cursor-pointer",
-                  "px-3",
-                  "py-2",
-                  "hover:bg-gray-700",
-                  "border-1",
-                  "border-b",
-                  "border-slate-700",
-                  "last:border-b-0",
-                ],
-                { "bg-gray-700": selected || highlighted }
-              )}
-              {...rest}
-            >
-              {item.label} - {item.id}
-            </li>
-          )}
-        />
-      </div>
       <h2 className="mb-3 mt-4 text-gray-400 font-bold text-lg sm:text-xl">
         Aaron&apos;s Links
       </h2>

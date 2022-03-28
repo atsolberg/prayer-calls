@@ -15,7 +15,7 @@ export function convertMdToHtml(md) {
 
   q.qsa(div, "h2").forEach((h2) => q.addClass(h2, "text-lg font-bold my-2"));
   q.qsa(div, "em").forEach((em) => {
-    q.addClass(em, "verse text-sky-500 dark:text-sky-400 py-1");
+    q.addClass(em, "verse text-sky-500 py-1");
   });
 
   return div;

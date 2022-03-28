@@ -44,7 +44,7 @@ function Details() {
       ) : (
         <div className="my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
           <div className="sm:flex items-center">
-            <h2 className="mb-3 mt-4 text-sky-500 dark:text-sky-400 font-bold text-xl sm:text-3xl">
+            <h2 className="mb-3 mt-4 text-sky-500 font-bold text-xl sm:text-3xl">
               {formatFileDate(name)}
             </h2>
             <p className="ml-auto my-4 flex items-center">

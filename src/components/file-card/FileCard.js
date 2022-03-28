@@ -1,4 +1,5 @@
 import React from "react";
+import cx from "classnames";
 import { Link } from "react-router-dom";
 import { shape, string } from "prop-types";
 
@@ -21,7 +22,15 @@ function FileCard({ file }) {
       <Link
         to={`/details/${id}`}
         css={styles}
-        className="block border border-slate-400 hover:border-sky-500 hover:border-2 relative"
+        className={cx([
+          "block",
+          "relative",
+          "bg-slate-300/25 dark:bg-slate-700/25",
+          "hover:bg-slate-400/25 hover:dark:bg-slate-600/25",
+          "rounded-lg",
+          "ring-1",
+          "ring-slate-300 dark:ring-slate-800",
+        ])}
       >
         <div className="square">
           <div
@@ -31,9 +40,22 @@ function FileCard({ file }) {
             }}
           />
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-1/6 bg-gradient-to-b from-transparent to-white dark:to-slate-900" />
+        <div
+          className={cx([
+            "absolute",
+            "bottom-0",
+            "left-0",
+            "w-full",
+            "h-1/6",
+            "bg-gradient-to-b",
+            "from-transparent",
+            "to-slate-200",
+            "dark:to-slate-900",
+            "rounded-b-lg",
+          ])}
+        />
       </Link>
-      <span className="absolute top-0 right-0 mr-1 mt-1 p-1 font-bold text-sky-500 dark:text-sky-400">
+      <span className="absolute top-0 right-1 mr-1 mt-1 p-1 font-bold text-sky-500">
         {formatFileDate(name)}
       </span>
     </div>

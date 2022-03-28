@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 
-const classes = ["text-sky-500", "dark:text-sky-400", "hover:underline"];
+const classes = ["text-sky-500", "hover:underline"];
 
 const A = React.forwardRef((props, ref) => {
   const { children, className = "", ...rest } = props;
