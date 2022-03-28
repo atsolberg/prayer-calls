@@ -37,6 +37,7 @@ function Hit({ line, term }) {
     <div
       className={cx([
         "flex items-start justify-between",
+        "text-sm",
         "pt-1",
         "border-1",
         "border-t",
