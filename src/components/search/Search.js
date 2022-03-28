@@ -21,7 +21,7 @@ function abbrDate(date) {
   return abbr;
 }
 
-function Hit({ line, term }) {
+function Hit({ line, term, onHide }) {
   const { text, textL = text.toLowerCase(), date, file } = line;
   const start = textL.indexOf(term);
   const end = start + term.length;
@@ -47,7 +47,7 @@ function Hit({ line, term }) {
     >
       <span dangerouslySetInnerHTML={{ __html: phrase }} />
       <span className="whitespace-nowrap">
-        <A as={Link} to={`/details/${file}`}>
+        <A as={Link} to={`/details/${file}`} onClick={onHide}>
           <span className="hidden sm:inline">{date}</span>
           <span className="sm:hidden">{abbrDate(date)}</span>
         </A>
@@ -56,11 +56,13 @@ function Hit({ line, term }) {
   );
 }
 
-function Results({ term, hits }) {
+function Results({ term, hits, onHide }) {
   return (
     <div className="my-5 px-2 max-h-[60vh] sm:max-h-[350px] overflow-y-auto space-y-1">
       {hits.length ? (
-        hits.map((h) => <Hit key={lineKey(h)} line={h} term={term} />)
+        hits.map((h) => (
+          <Hit key={lineKey(h)} line={h} term={term} onHide={onHide} />
+        ))
       ) : (
         <div className="text-sm">
           <i>No matching text found</i>
@@ -164,7 +166,7 @@ function Search({ active, onHide, ...rest }) {
         </label>
       </div>
 
-      <Results term={term} hits={hits} />
+      <Results term={term} hits={hits} onHide={onHide} />
     </div>
   );
 }
