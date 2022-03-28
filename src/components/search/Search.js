@@ -57,7 +57,7 @@ function Hit({ line, term }) {
 
 function Results({ term, hits }) {
   return (
-    <div className="my-5 px-2 max-h-[200px] overflow-y-auto space-y-1">
+    <div className="my-5 px-2 max-h-[60vh] sm:max-h-[350px] overflow-y-auto space-y-1">
       {hits.length ? (
         hits.map((h) => <Hit key={lineKey(h)} line={h} term={term} />)
       ) : (

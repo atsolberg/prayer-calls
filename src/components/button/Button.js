@@ -23,7 +23,11 @@ const sizes = {
 };
 const themes = {
   primary: ["text-white", "bg-sky-500", "border-sky-500"],
-  secondary: ["text-slate-400", "bg-slate-700", "border-slate-700"],
+  secondary: [
+    "text-slate-600 dark:text-slate-400",
+    "bg-slate-300 border-slate-300",
+    "dark:bg-slate-700 dark:border-slate-700",
+  ],
   outline: ["bg-transparent", "border-slate-500"],
   hover: [
     "bg-tranparent",

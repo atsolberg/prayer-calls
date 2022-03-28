@@ -29,7 +29,7 @@ function FileCard({ file }) {
           "hover:bg-slate-400/25 hover:dark:bg-slate-600/25",
           "rounded-lg",
           "ring-1",
-          "ring-slate-300 dark:ring-slate-800",
+          "ring-slate-300/75 dark:ring-slate-800",
         ])}
       >
         <div className="square">

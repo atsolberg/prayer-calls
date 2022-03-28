@@ -83,7 +83,7 @@ function Header() {
         "dark:border-slate-50/[0.06]",
 
         "backdrop-blur",
-        "bg-white/75",
+        "bg-white",
         "dark:bg-slate-900/75",
       ])}
     >
