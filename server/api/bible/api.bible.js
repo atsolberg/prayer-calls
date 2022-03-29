@@ -1,4 +1,5 @@
 import axios from "axios";
+import { bibles_versions } from "../../../src/util/constants";
 
 /**
  * Api module for https://docs.api.bible/
@@ -34,8 +35,17 @@ export function getBibles() {
     });
 }
 
+/**
+ * Get a verse from the scripture.api.bible api
+ * @param {string} bibleId - i.e. "de4e12af7f28f599-01"
+ * @param {string} verseId - i.e. "GEN.1.1-GEN.1.4"
+ * @returns {Promise<Verse>}
+ */
 export function getVerse(bibleId, verseId) {
   const isRange = verseId.includes("-");
+  const bible = bibles_versions.find((bv) => bv.id === bibleId);
+  console.log(`bibleId: `, bibleId);
+  console.log(`bible: `, bible);
 
   return axios
     .get(
@@ -53,7 +63,11 @@ export function getVerse(bibleId, verseId) {
         id: verseId,
         bibleId: verse.bibleId,
         content: verse.content,
-        copyright: verse.copyright,
+        copyright: {
+          href: "",
+          hover: verse.copyright,
+          text: bible?.abbr || "",
+        },
       };
     });
 }

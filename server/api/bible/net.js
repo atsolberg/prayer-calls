@@ -2,7 +2,6 @@ import axios from "axios";
 import { books } from "../../../src/util/constants";
 
 const base = "http://labs.bible.org/api";
-// const base = "http://labs.bible.org/api/?passage=John+3:16-17"
 
 /**
  * Returns the chapter and verse values for a verseId part.
@@ -34,8 +33,9 @@ function getVerseParam(verseId) {
 }
 
 /**
- * Return a specific verse or passage from the bible.org api
- * @param {string} verseId - i.e. 'GEN.1.1' or 'GEN.2.4-GEN.2.10'
+ * Get a verse from the labs.bible.org/api api
+ * @param {string} bibleId - i.e. "NET"
+ * @param {string} verseId - i.e. "GEN.1.1-GEN.1.4"
  * @returns {Promise<Verse>}
  */
 export function getNetVerse(bibleId, verseId) {
@@ -49,7 +49,11 @@ export function getNetVerse(bibleId, verseId) {
         id: verseId,
         bibleId: bibleId,
         content: verse,
-        copyright: "Copyright ©1996-2020 Bible.org",
+        copyright: {
+          href: "http://www.bible.org",
+          hover: "Copyright ©1996-2022 Bible.org",
+          text: "NET",
+        },
       };
     });
 }

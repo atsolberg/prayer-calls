@@ -61,10 +61,12 @@ const Button = React.forwardRef((props, ref) => {
   if (upper) classes.push("uppercase");
   classes.push(themes[theme], sizes[size]);
 
+  const Comp = rest.href ? "a" : Btn;
+
   return (
-    <Btn ref={ref} className={cx(className, classes)} {...rest}>
+    <Comp ref={ref} className={cx(className, classes)} {...rest}>
       {children}
-    </Btn>
+    </Comp>
   );
 });
 Button.displayName = "Button";

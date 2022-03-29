@@ -117,6 +117,7 @@ export function bytes(str) {
  * @param {number} number of characters to keep
  */
 export function truncate(str, num) {
+  if (!str) return str;
   if (str.length <= num) {
     return str;
   }

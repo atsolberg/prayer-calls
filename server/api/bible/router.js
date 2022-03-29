@@ -1,11 +1,27 @@
 import express from "express";
+
 import BibleCache from "../../db/bible";
 import { bibles_versions } from "../../../src/util/constants";
 import { entityTable } from "../../db/util";
 import { getBibles, getVerse } from "./api.bible";
 import { getNetVerse } from "./net";
+import { getEsvVerse } from "./esv";
 
 const router = express.Router();
+
+function getVerseStrategy(bibleId) {
+  switch (bibleId) {
+    case "ESV": {
+      return getEsvVerse;
+    }
+    case "NET": {
+      return getNetVerse;
+    }
+    default: {
+      return getVerse;
+    }
+  }
+}
 
 // Get Bibles
 router.get("/bibles", (req, res) => {
@@ -20,16 +36,34 @@ router.get("/bibles", (req, res) => {
     getBibles()
       .then((bibles) => {
         // Add other bibles we don't get from http://scripture.api.bible
-        bibles.push({
-          id: "NET",
-          name: "New English Translation",
-          abbr: "NET",
-        });
+        bibles.push(
+          {
+            id: "NET",
+            name: "New English Translation",
+            abbr: "NET",
+          },
+          {
+            id: "ESV",
+            name: "English Standard Version",
+            abbr: "ESV",
+          }
+        );
 
+        // filter to shorter list
         if (filter) {
           const ids = bibles_versions.map((bv) => bv.id);
           bibles = bibles.filter((b) => ids.includes(b.id));
         }
+
+        // sort by preferred versions
+        bibles.sort((a, b) => {
+          let ia = bibles_versions.findIndex((v) => v.id === a.id);
+          let ib = bibles_versions.findIndex((v) => v.id === b.id);
+          if (ia === -1) ia = 9999;
+          if (ib === -1) ib = 9999;
+          return ia - ib;
+        });
+
         if (uncached) {
           const table = entityTable();
           bibles.forEach((b) => {
@@ -58,19 +92,17 @@ router.get("/:bible/verse/:id", (req, res) => {
   if (verse) {
     res.send(verse);
   } else {
-    const isNet = bibleId === "NET";
-    const p = isNet
-      ? getNetVerse(bibleId, verseId)
-      : getVerse(bibleId, verseId);
-
-    p.then((verse) => {
-      BibleCache.setVerse(verse, verseId);
-      res.send(BibleCache.getVerse(bibleId, verseId));
-    }).catch((response) => {
-      console.log("error getting verse", response);
-      res.status(response.status);
-      res.send(response.data);
-    });
+    const strategy = getVerseStrategy(bibleId);
+    strategy(bibleId, verseId)
+      .then((verse) => {
+        BibleCache.setVerse(verse, verseId);
+        res.send(BibleCache.getVerse(bibleId, verseId));
+      })
+      .catch((response) => {
+        console.log("error getting verse", response);
+        res.status(response.status);
+        res.send(response.data);
+      });
   }
 });
 
