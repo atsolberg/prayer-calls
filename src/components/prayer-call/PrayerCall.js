@@ -10,8 +10,8 @@ import A from "../anchor/A";
 
 const vStyles = css`
   max-width: 500px;
-  .v {
-    margin-right: 5px;
+  .v,
+  b {
     font-weight: bold;
 
     // super script
@@ -20,6 +20,9 @@ const vStyles = css`
     line-height: 0;
     position: relative;
     vertical-align: baseline;
+  }
+  .v {
+    margin-right: 5px;
   }
 `;
 

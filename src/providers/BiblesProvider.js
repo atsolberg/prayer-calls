@@ -10,8 +10,8 @@ import { getBibles } from "../util/api";
 
 const default_bible = {
   id: "de4e12af7f28f599-01",
-  nameLocal: "King James Version",
-  abbreviationLocal: "KJV",
+  name: "King James Version",
+  abbr: "KJV",
 };
 const cookie_name = "bibleId";
 const cookie_value = Cookies.get(cookie_name);
@@ -19,20 +19,22 @@ let initial = default_bible;
 if (cookie_value) {
   try {
     initial = JSON.parse(cookie_value);
+    // Handle situation where I was storing http://api.bible structure
+    if (initial.nameLocal) initial.name = initial.nameLocal;
+    if (initial.abbreviationLocal) initial.abbr = initial.abbreviationLocal;
   } catch (e) {
     initial = default_bible;
     Cookies.set(cookie_name, JSON.stringify(initial));
     console.log("Error parsing bible cookie", cookie_value);
   }
-} else {
-  Cookies.set(cookie_name, JSON.stringify(initial));
 }
+
+Cookies.set(cookie_name, JSON.stringify(initial));
 
 const BiblesContext = React.createContext();
 
 /**
- * Component to provide bible versions from the
- * https://scripture.api.bible/livedocs#/ api.
+ * Component to provide bible versions
  */
 function BiblesProvider(props) {
   const [bibles, setBibles] = useState({
@@ -45,8 +47,8 @@ function BiblesProvider(props) {
     setCurrent(item.id);
     const next = {
       id: item.id,
-      nameLocal: item.nameLocal,
-      abbreviationLocal: item.abbreviationLocal,
+      name: item.name,
+      abbr: item.abbr,
     };
     Cookies.set(cookie_name, JSON.stringify(next));
   }, []);

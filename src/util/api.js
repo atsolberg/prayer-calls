@@ -31,6 +31,12 @@ export function getFile(id) {
   });
 }
 
+/**
+ * Get a list of bible versions
+ * @param filter
+ * @param uncached
+ * @returns {Promise<EntityTable<Bible>>}
+ */
 export function getBibles({ filter, uncached } = {}) {
   const params = {};
   if (filter) params.filter = true;
@@ -39,18 +45,10 @@ export function getBibles({ filter, uncached } = {}) {
 }
 
 /**
- * Fetch books for the kjv which should work for all
- * the ones we will use.
- */
-export function getBooks() {
-  return client({ endpoint: "/api/bible/de4e12af7f28f599-01/books" });
-}
-
-/**
  * Get a verse from a specific bible edition
  * @property {string} bibleId - i.e. "de4e12af7f28f599-01"
  * @property {string} verseId - i.e. "GEN.1.1"
- * @returns {Promise<Response>}
+ * @returns {Promise<Verse>}
  */
 export function getVerse(bibleId, verseId) {
   return client({ endpoint: `/api/bible/${bibleId}/verse/${verseId}` });

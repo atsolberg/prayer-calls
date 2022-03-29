@@ -117,4 +117,5 @@ export const bibles_versions = [
   { abbr: "LSV", id: "01b29f4b342acc35-01" },
   { abbr: "ASV", id: "06125adad2d5898a-01" },
   { abbr: "WEB", id: "9879dbb7cfe39e4d-01" },
+  { abbr: "NET", id: "NET" },
 ];

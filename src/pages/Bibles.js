@@ -16,7 +16,7 @@ function Bibles() {
 
       {Object.values(bibles.byId).map((b) => (
         <div key={b.id} className="py-3 border-b border-1 border-slate-700">
-          {b.abbreviationLocal} - {b.nameLocal} - {b.id}
+          {b.abbr} - {b.name} - {b.id}
         </div>
       ))}
     </div>

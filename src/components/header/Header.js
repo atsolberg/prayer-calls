@@ -13,14 +13,11 @@ import Magnifier from "../icons/Magnifier";
 import { Btn } from "../button/Button";
 
 function BibleMenuItem({ item, ctx }) {
-  if (ctx === "button") return item.abbreviationLocal;
+  if (ctx === "button") return item.abbr;
 
   return (
-    <div>
-      <div className="py-2 border-dashed border-b border-1 border-slate-500">
-        {item.abbreviationLocal}
-      </div>
-      <div className="py-2">{item.nameLocal}</div>
+    <div className="text-sm">
+      {item.abbr} - {item.name}
     </div>
   );
 }

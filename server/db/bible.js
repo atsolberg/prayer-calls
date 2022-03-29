@@ -2,8 +2,6 @@ import { entityTable } from "./util";
 
 const data = {
   bibles: entityTable(),
-  books: entityTable(),
-  chapters: entityTable(),
   verses: entityTable(),
 };
 
@@ -34,44 +32,6 @@ const BibleCache = {
    */
   getBible(id) {
     return data?.bibles?.byId?.[id] || null;
-  },
-
-  /**
-   * Set books in the database
-   * @param {Book[]} books
-   */
-  setBooks(books) {
-    const [first] = books;
-    const { bibleId } = first;
-
-    books.forEach((b) => {
-      const id = `${bibleId}.${b.id}`;
-      data.books.allIds.push(id);
-      data.books.byId[id] = b;
-    });
-  },
-
-  /**
-   * Get all books for a bible edition
-   * @param {string} bibleId - i.e. "de4e12af7f28f599-01
-   * @returns {Bible[]}
-   */
-  getBooks(bibleId) {
-    const all = Object.values(data?.books?.byId || {});
-    const books = all?.filter((b) => b.bibleId === bibleId);
-    return books;
-  },
-
-  /**
-   * Get a book from the database
-   * @param {string} bibleId - i.e. "de4e12af7f28f599-01"
-   * @param {string} bookId - i.e. "GEN.1.1"
-   * @returns {Book|null}
-   */
-  getBook(bibleId, bookId) {
-    const id = `${bibleId}.${bookId}`;
-    const book = data?.books?.byId?.[id];
-    return book || null;
   },
 
   /**
