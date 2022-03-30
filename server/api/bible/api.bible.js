@@ -44,8 +44,6 @@ export function getBibles() {
 export function getVerse(bibleId, verseId) {
   const isRange = verseId.includes("-");
   const bible = bibles_versions.find((bv) => bv.id === bibleId);
-  console.log(`bibleId: `, bibleId);
-  console.log(`bible: `, bible);
 
   return axios
     .get(

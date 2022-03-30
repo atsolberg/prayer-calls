@@ -113,6 +113,7 @@ export const books = [
  */
 export const bibles_versions = [
   { abbr: "KJV", id: "de4e12af7f28f599-01" },
+  { abbr: "NASB", id: "NAS" },
   { abbr: "ESV", id: "ESV" },
   { abbr: "ASV", id: "06125adad2d5898a-01" },
   { abbr: "NET", id: "NET" },
@@ -120,3 +121,18 @@ export const bibles_versions = [
   { abbr: "FBV", id: "65eec8e0b60e656b-01" },
   { abbr: "WEB", id: "9879dbb7cfe39e4d-01" },
 ];
+
+export const copyright_info = {
+  NASB: {
+    copy: `New American Standard Bible®, Copyright © 1960, 1971, 1977, 1995, 2020 by The Lockman Foundation. All rights reserved. The “NASB,” “NAS,” “New American Standard Bible,” and “New American Standard,” are trademarks registered in the United States Patent and Trademark Office by The Lockman Foundation. Use of these trademarks requires the permission of The Lockman Foundation.`,
+  },
+  ESV: {
+    href: "http://www.esv.org",
+    copy: "Copyright ©2022 esv.org",
+  },
+  NET: {
+    href: "http://www.bible.org",
+    copy: "Copyright ©1996-2022 Bible.org",
+  },
+};
+copyright_info.NAS = copyright_info.NASB;

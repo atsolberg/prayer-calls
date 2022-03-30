@@ -6,6 +6,7 @@ import { entityTable } from "../../db/util";
 import { getBibles, getVerse } from "./api.bible";
 import { getNetVerse } from "./net";
 import { getEsvVerse } from "./esv";
+import { getBibleBrainVerse } from "./digital-bible";
 
 const router = express.Router();
 
@@ -16,6 +17,9 @@ function getVerseStrategy(bibleId) {
     }
     case "NET": {
       return getNetVerse;
+    }
+    case "NAS": {
+      return getBibleBrainVerse;
     }
     default: {
       return getVerse;
@@ -46,6 +50,11 @@ router.get("/bibles", (req, res) => {
             id: "ESV",
             name: "English Standard Version",
             abbr: "ESV",
+          },
+          {
+            id: "NAS",
+            name: "New American Standard Bible",
+            abbr: "NASB",
           }
         );
 

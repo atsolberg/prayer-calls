@@ -1,5 +1,9 @@
 import axios from "axios";
-import { books } from "../../../src/util/constants";
+import {
+  bibles_versions,
+  books,
+  copyright_info,
+} from "../../../src/util/constants";
 
 /**
  * Api module to get scriptures from the api.esv.org api
@@ -57,6 +61,7 @@ function getVerseParam(verseId) {
  */
 export function getEsvVerse(bibleId, verseId) {
   const isRange = verseId.includes("-");
+  const bible = bibles_versions.find((bv) => bv.id === "ESV");
 
   const esv_config = { ...config };
   esv_config.params = {
@@ -74,9 +79,9 @@ export function getEsvVerse(bibleId, verseId) {
       bibleId: bibleId,
       content: verse.passages[0],
       copyright: {
-        href: "http://www.esv.org",
-        hover: "Copyright ©2022 esv.org",
-        text: "ESV",
+        href: copyright_info[bible.id].href,
+        hover: copyright_info[bible.id].copy,
+        text: bible.abbr,
       },
     };
   });

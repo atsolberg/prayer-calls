@@ -1,5 +1,9 @@
 import axios from "axios";
-import { books } from "../../../src/util/constants";
+import {
+  bibles_versions,
+  books,
+  copyright_info,
+} from "../../../src/util/constants";
 
 const base = "http://labs.bible.org/api";
 
@@ -40,6 +44,7 @@ function getVerseParam(verseId) {
  */
 export function getNetVerse(bibleId, verseId) {
   const verseParam = getVerseParam(verseId);
+  const bible = bibles_versions.find((bv) => bv.id === "NET");
 
   return axios
     .get(`${base}`, { params: { passage: verseParam } })
@@ -50,9 +55,9 @@ export function getNetVerse(bibleId, verseId) {
         bibleId: bibleId,
         content: verse,
         copyright: {
-          href: "http://www.bible.org",
-          hover: "Copyright ©1996-2022 Bible.org",
-          text: "NET",
+          href: copyright_info[bible.id].href,
+          hover: copyright_info[bible.id].copy,
+          text: bible.abbr,
         },
       };
     });
