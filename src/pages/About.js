@@ -59,15 +59,90 @@ function About() {
           </A>
         </p>
       </div>
-
-      <h4 className="text-xl mt-3 font-bold">Todo List</h4>
+      <h4 className="text-xl mt-3 font-bold mb-2">Todo List</h4>
       <ul>
-        <li>- Get a logo?</li>
-        <li>- Add preview to search</li>
-        <li>- Get more bible versions (ESV, NASV, AMP, NKJV)</li>
-        <li>- Start archiving backwards, December, November, ect</li>
+        <li>
+          <i className="far fa-square" /> Get a logo?
+        </li>
+        <li>
+          <i className="far fa-square-check" /> Add bible version picker
+        </li>
+        <li>
+          <i className="far fa-square-check" /> Add search feature
+        </li>
+        <li>
+          <i className="far fa-square" /> Add preview to search
+        </li>
       </ul>
-
+      <h4 className="text-lg mt-3 font-bold mb-2">Get more bible versions</h4>
+      <ul>
+        <li>
+          <i className="far fa-square-check" /> ESV
+        </li>
+        <li>
+          <i className="far fa-square-check" /> NASB
+        </li>
+        <li>
+          <i className="far fa-square" /> AMP
+        </li>
+        <li>
+          <i className="far fa-square" /> ️NKJV
+        </li>
+      </ul>
+      <h4 className="text-lg mt-3 font-bold mb-2">Start archiving backwards</h4>
+      <ul>
+        <li>
+          <i className="far fa-square-check" /> March 2022
+        </li>
+        <li>
+          <i className="far fa-square-check" /> February 2022
+        </li>
+        <li>
+          <i className="far fa-square-check" /> January 2022
+        </li>
+        <li>
+          <i className="far fa-square-check" /> December 2021
+        </li>
+        <li>
+          <i className="far fa-square-check" /> November 2021
+        </li>
+        <li>
+          <i className="far fa-square" /> October 2021
+        </li>
+        <li>
+          <i className="far fa-square" /> September 2021
+        </li>
+        <li>
+          <i className="far fa-square" /> August 2021
+        </li>
+        <li>
+          <i className="far fa-square" /> July 2021
+        </li>
+        <li>
+          <i className="far fa-square" /> June 2021
+        </li>
+        <li>
+          <i className="far fa-square" /> May 2021
+        </li>
+        <li>
+          <i className="far fa-square" /> April 2021
+        </li>
+        <li>
+          <i className="far fa-square" /> March 2021
+        </li>
+        <li>
+          <i className="far fa-square" /> February 2021
+        </li>
+        <li>
+          <i className="far fa-square" /> January 2021
+        </li>
+        <li>
+          <i className="far fa-square" /> December 2020
+        </li>
+        <li>
+          <i className="far fa-square" /> November 2020
+        </li>
+      </ul>
       <h4 className="text-xl mt-3 font-bold">Contact</h4>
       <p>
         If you would like to send feedback or report a bug, I can be reached at{" "}
