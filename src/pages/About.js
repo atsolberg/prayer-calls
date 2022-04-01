@@ -73,6 +73,9 @@ function About() {
         <li>
           <i className="far fa-square" /> Add preview to search
         </li>
+        <li>
+          <i className="far fa-square" /> Fix links when no morning call exists
+        </li>
       </ul>
       <h4 className="text-lg mt-3 font-bold mb-2">Get more bible versions</h4>
       <ul>
@@ -143,6 +146,23 @@ function About() {
           <i className="far fa-square" /> November 2020
         </li>
       </ul>
+
+      <h4 className="text-lg mt-3 font-bold mb-2">Set override links for:</h4>
+      <ul>
+        <li>
+          <i className="far fa-square" />{" "}
+          https://billyebrim.org/wednesday-evening-oct-13/
+        </li>
+        <li>
+          <i className="far fa-square" /> https://www.aglorious.church/media bb
+          at a glorious church, dec 29
+        </li>
+        <li>
+          <i className="far fa-square" />{" "}
+          https://www.youtube.com/watch?v=G1dwMXd5cGQ bb at lw sept 18th
+        </li>
+      </ul>
+
       <h4 className="text-xl mt-3 font-bold">Contact</h4>
       <p>
         If you would like to send feedback or report a bug, I can be reached at{" "}
