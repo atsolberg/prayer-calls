@@ -113,10 +113,10 @@ function About() {
           <i className="far fa-square-check" /> September 2021
         </li>
         <li>
-          <i className="far fa-square" /> August 2021
+          <i className="far fa-square-check" /> August 2021
         </li>
         <li>
-          <i className="far fa-square" /> July 2021
+          <i className="far fa-square-check" /> July 2021
         </li>
         <li>
           <i className="far fa-square" /> June 2021
