@@ -122,28 +122,22 @@ function About() {
           <i className="far fa-square-check" /> July 2021
         </li>
         <li>
-          <i className="far fa-square" /> June 2021
+          <i className="far fa-square-check" /> June 2021
         </li>
         <li>
-          <i className="far fa-square" /> May 2021
+          <i className="far fa-square-check" /> May 2021
         </li>
         <li>
-          <i className="far fa-square" /> April 2021
+          <i className="far fa-square-check" /> April 2021
         </li>
         <li>
-          <i className="far fa-square" /> March 2021
+          <i className="far fa-square-check" /> March 2021
         </li>
         <li>
-          <i className="far fa-square" /> February 2021
+          <i className="far fa-square-check" /> February 2021
         </li>
         <li>
-          <i className="far fa-square" /> January 2021
-        </li>
-        <li>
-          <i className="far fa-square" /> December 2020
-        </li>
-        <li>
-          <i className="far fa-square" /> November 2020
+          <i className="far fa-square-check" /> January 2021
         </li>
       </ul>
 
