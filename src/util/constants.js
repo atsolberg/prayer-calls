@@ -136,3 +136,24 @@ export const copyright_info = {
   },
 };
 copyright_info.NAS = copyright_info.NASB;
+
+/**
+ * Special link settings for days when normal calls didn't happen
+ */
+export const call_links = {
+  "2021-10-13.md": {
+    morning: false,
+    noon: true,
+    evening: "https://billyebrim.org/wednesday-evening-oct-13/",
+  },
+  "2021-12-29.md": {
+    morning: true,
+    noon: false,
+    evening: "https://www.aglorious.church/media",
+  },
+  "2021-09-18.md": {
+    morning: false,
+    noon: false,
+    evening: "https://www.youtube.com/watch?v=G1dwMXd5cGQ",
+  },
+};

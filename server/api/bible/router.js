@@ -7,6 +7,7 @@ import { getBibles, getVerse } from "./api.bible";
 import { getNetVerse } from "./net";
 import { getEsvVerse } from "./esv";
 import { getBibleBrainVerse } from "./digital-bible";
+import { handleApiError } from "./utils";
 
 const router = express.Router();
 
@@ -85,10 +86,7 @@ router.get("/bibles", (req, res) => {
           res.send(BibleCache.getBibles());
         }
       })
-      .catch((response) => {
-        res.status(response.status);
-        res.send(response.data);
-      });
+      .catch((r2) => handleApiError("Error fetching bible", r2, res));
   }
 });
 
@@ -107,11 +105,7 @@ router.get("/:bible/verse/:id", (req, res) => {
         BibleCache.setVerse(verse, verseId);
         res.send(BibleCache.getVerse(bibleId, verseId));
       })
-      .catch((response) => {
-        console.log("error getting verse", response);
-        res.status(response.status);
-        res.send(response.data);
-      });
+      .catch((r2) => handleApiError("Error fetching verse", r2, res));
   }
 });
 

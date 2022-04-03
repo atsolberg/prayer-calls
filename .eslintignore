@@ -1,0 +1,4 @@
+**/dist
+**/__test__
+**/vendor
+**/node_modules

@@ -16,7 +16,7 @@ function Home() {
 
   return (
     <div className="relative my-0 mx-auto w-11/12 md:w-10/12 lg:w-9/12">
-      {calls.loaded ? <Cards calls={calls} /> : null}
+      {calls.loaded ? <Cards calls={calls.entities} /> : null}
     </div>
   );
 }

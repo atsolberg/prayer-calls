@@ -1,9 +1,15 @@
 import { formatFileDate } from "./date";
 
+/**
+ * Returns the {EntityTable} with `line_data` added to it
+ * @param {Object} table
+ * @param {EntityTable<CallFile>} table.entities
+ * @return {LineData[]}
+ */
 export function indexCallText(table) {
   const line_data = [];
 
-  Object.values(table.byId).forEach((call) => {
+  table.entities.all().forEach((call) => {
     const lines = call.contents
       .split("\n")
       .map((l) => l.trim())
@@ -30,5 +36,5 @@ export function indexCallText(table) {
     return a.lineNum - b.lineNum;
   });
 
-  return { ...table, line_data };
+  return line_data;
 }

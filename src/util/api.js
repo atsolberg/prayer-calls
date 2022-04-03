@@ -1,20 +1,29 @@
 import client from "./client";
+import EntityTable from "../../shared/util/EntityTable";
 
-let files = {
+const files = {
   loaded: false,
-  allIds: [],
-  byId: {},
+  entities: new EntityTable(),
 };
 
 /**
  * Get all markdown files as a entity table
- * @returns {Promise<*&{loaded: boolean}>|Promise<{loaded: boolean, byId: {}, allIds: string[]}>}
+ * @returns {Promise<{ loaded: boolean, entities: EntityTable<CallFile> }>}
  */
 export function getFiles() {
   if (files.loaded) return Promise.resolve(files);
 
   return client({ endpoint: "/api/files" }).then((resp) => {
-    files = { ...resp.files, loaded: true };
+    const table = new EntityTable(Object.values(resp.files.byId));
+    table.sort((a, b) => {
+      const d1 = new Date(table.get(a).name);
+      const d2 = new Date(table.get(b).name);
+      if (d1 < d2) return 1;
+      if (d1 > d2) return -1;
+      return 0;
+    });
+    files.entities = table;
+    files.loaded = true;
     return files;
   });
 }
@@ -25,9 +34,9 @@ export function getFiles() {
  * @returns {Promise<null|string>}
  */
 export function getFile(id) {
-  if (files.loaded) return Promise.resolve(files.byId[id] || null);
+  if (files.loaded) return Promise.resolve(files.entities.get(id) || null);
   return new Promise((resolve) => {
-    getFiles().then((files) => resolve(files.byId[id] || null));
+    getFiles().then((files) => resolve(files.entities.get(id) || null));
   });
 }
 

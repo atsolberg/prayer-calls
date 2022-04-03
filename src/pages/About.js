@@ -1,4 +1,17 @@
 import A from "../components/anchor/A";
+import { bool, node } from "prop-types";
+
+TodoItem.propTypes = {
+  children: node,
+  done: bool,
+};
+function TodoItem({ children, done }) {
+  return (
+    <li>
+      <i className={`far fa-square${done ? "-check" : ""}`} /> {children}
+    </li>
+  );
+}
 
 function About() {
   return (
@@ -61,100 +74,39 @@ function About() {
       </div>
       <h4 className="text-xl mt-3 font-bold mb-2">Todo List</h4>
       <ul>
-        <li>
-          <i className="far fa-square" /> Get a logo?
-        </li>
-        <li>
-          <i className="far fa-square-check" /> Add bible version picker
-        </li>
-        <li>
-          <i className="far fa-square-check" /> Add search feature
-        </li>
-        <li>
-          <i className="far fa-square" /> Add preview to search
-        </li>
-        <li>
-          <i className="far fa-square" /> Fix links when no morning call exists
-        </li>
+        <TodoItem>Get a logo?</TodoItem>
+        <TodoItem>Add share feature</TodoItem>
+        <TodoItem done>Add bible version picker</TodoItem>
+        <TodoItem done>Add search feature</TodoItem>
+        <TodoItem>Add preview to search</TodoItem>
+        <TodoItem done>Add next/prev links</TodoItem>
+        <TodoItem done>Fix links when no morning call exists</TodoItem>
+        <TodoItem done>Add custom links</TodoItem>
       </ul>
       <h4 className="text-lg mt-3 font-bold mb-2">Get more bible versions</h4>
       <ul>
-        <li>
-          <i className="far fa-square-check" /> ESV
-        </li>
-        <li>
-          <i className="far fa-square-check" /> NASB
-        </li>
-        <li>
-          <i className="far fa-square" /> AMP
-        </li>
-        <li>
-          <i className="far fa-square" /> ️NKJV
-        </li>
+        <TodoItem done>ESV</TodoItem>
+        <TodoItem done>NASB</TodoItem>
+        <TodoItem>AMP</TodoItem>
+        <TodoItem>NKJV</TodoItem>
       </ul>
       <h4 className="text-lg mt-3 font-bold mb-2">Start archiving backwards</h4>
       <ul>
-        <li>
-          <i className="far fa-square-check" /> March 2022
-        </li>
-        <li>
-          <i className="far fa-square-check" /> February 2022
-        </li>
-        <li>
-          <i className="far fa-square-check" /> January 2022
-        </li>
-        <li>
-          <i className="far fa-square-check" /> December 2021
-        </li>
-        <li>
-          <i className="far fa-square-check" /> November 2021
-        </li>
-        <li>
-          <i className="far fa-square-check" /> October 2021
-        </li>
-        <li>
-          <i className="far fa-square-check" /> September 2021
-        </li>
-        <li>
-          <i className="far fa-square-check" /> August 2021
-        </li>
-        <li>
-          <i className="far fa-square-check" /> July 2021
-        </li>
-        <li>
-          <i className="far fa-square-check" /> June 2021
-        </li>
-        <li>
-          <i className="far fa-square-check" /> May 2021
-        </li>
-        <li>
-          <i className="far fa-square-check" /> April 2021
-        </li>
-        <li>
-          <i className="far fa-square-check" /> March 2021
-        </li>
-        <li>
-          <i className="far fa-square-check" /> February 2021
-        </li>
-        <li>
-          <i className="far fa-square-check" /> January 2021
-        </li>
-      </ul>
-
-      <h4 className="text-lg mt-3 font-bold mb-2">Set override links for:</h4>
-      <ul>
-        <li>
-          <i className="far fa-square" />{" "}
-          https://billyebrim.org/wednesday-evening-oct-13/
-        </li>
-        <li>
-          <i className="far fa-square" /> https://www.aglorious.church/media bb
-          at a glorious church, dec 29
-        </li>
-        <li>
-          <i className="far fa-square" />{" "}
-          https://www.youtube.com/watch?v=G1dwMXd5cGQ bb at lw sept 18th
-        </li>
+        <TodoItem done>March 2022</TodoItem>
+        <TodoItem done>February 2022</TodoItem>
+        <TodoItem done>January 2022</TodoItem>
+        <TodoItem done>December 2021</TodoItem>
+        <TodoItem done>November 2021</TodoItem>
+        <TodoItem done>October 2021</TodoItem>
+        <TodoItem done>September 2021</TodoItem>
+        <TodoItem done>August 2021</TodoItem>
+        <TodoItem done>July 2021</TodoItem>
+        <TodoItem done>June 2021</TodoItem>
+        <TodoItem done>May 2021</TodoItem>
+        <TodoItem done>April 2021</TodoItem>
+        <TodoItem done>March 2021</TodoItem>
+        <TodoItem done>February 2021</TodoItem>
+        <TodoItem done>January 2021</TodoItem>
       </ul>
 
       <h4 className="text-xl mt-3 font-bold">Contact</h4>

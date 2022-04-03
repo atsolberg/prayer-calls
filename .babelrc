@@ -5,5 +5,8 @@
       { "runtime": "automatic", "importSource": "@emotion/react" }
     ]
   ],
-  "plugins": ["@babel/plugin-proposal-class-properties", "@emotion/babel-plugin"]
+  "plugins": [
+    "@emotion/babel-plugin",
+    "add-react-displayname"
+  ]
 }

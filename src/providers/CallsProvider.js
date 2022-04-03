@@ -13,8 +13,11 @@ function CallsProvider(props) {
   // Fetch markdown files
   useEffect(() => {
     getFiles()
-      .then((results) => {
-        setCalls(indexCallText(results));
+      .then((files) => {
+        setCalls({
+          ...files,
+          line_data: indexCallText(files),
+        });
         setLoaded(true);
       })
       .catch((err) => console.log("Error fetching call files", err));
@@ -23,6 +26,10 @@ function CallsProvider(props) {
   return <CallsContext.Provider value={value} {...props} />;
 }
 
+/**
+ * Return the data for all calls
+ * @return {CallData}
+ */
 export function useCalls() {
   const context = useContext(CallsContext);
   if (!context) throw new Error("useCalls must be used within CallsProvider");
