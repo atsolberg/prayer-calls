@@ -7,7 +7,7 @@ import { bibles_versions } from "../../../src/util/constants";
 
 const base = "https://api.scripture.api.bible/v1";
 // https://scripture.api.bible/admin
-const API_KEY = "696aaf815b655732b79bcba7e67311b2";
+const API_KEY = process.env.API_DOT_BIBLE_API_KEY;
 const config = { headers: { "api-key": API_KEY } };
 
 function cleanNames(bibles) {

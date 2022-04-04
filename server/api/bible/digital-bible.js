@@ -11,7 +11,7 @@ import {
  */
 
 const base = "https://b4.dbt.io/api/bibles/filesets";
-const API_KEY = "7f89799e-37f0-4d1f-8c05-4d1b4d1b4104";
+const API_KEY = process.env.DIGI_BIBLE_API_KEY;
 
 /**
  * Returns the chapter and verse values for a verseId part.
