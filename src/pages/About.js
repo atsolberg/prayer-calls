@@ -74,14 +74,14 @@ function About() {
       </div>
       <h4 className="text-xl mt-3 font-bold mb-2">Todo List</h4>
       <ul>
-        <TodoItem>Get a logo?</TodoItem>
-        <TodoItem>Add share feature</TodoItem>
         <TodoItem done>Add bible version picker</TodoItem>
         <TodoItem done>Add search feature</TodoItem>
-        <TodoItem>Add preview to search</TodoItem>
         <TodoItem done>Add next/prev links</TodoItem>
         <TodoItem done>Fix links when no morning call exists</TodoItem>
         <TodoItem done>Add custom links</TodoItem>
+        <TodoItem>Add preview to search</TodoItem>
+        <TodoItem>Get a logo?</TodoItem>
+        <TodoItem>Add share feature</TodoItem>
       </ul>
       <h4 className="text-lg mt-3 font-bold mb-2">Get more bible versions</h4>
       <ul>

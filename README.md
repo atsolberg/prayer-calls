@@ -8,3 +8,5 @@ Info stored at https://docs.google.com/spreadsheets/d/1OeCyfwu_ZZpatAr2haDEYZVy5
 ## Environemnt Variables Expected
 
 - ESV_API_KEY
+- DIGI_BIBLE_API_KEY
+- API_DOT_BIBLE_API_KEY
