@@ -10,7 +10,7 @@ import {
  */
 
 const base = "https://api.esv.org/v3/passage/html";
-const API_KEY = "5d9179a576acd215a5f53a4d3af97c977570ed46";
+const API_KEY = process.env.ESV_API_KEY;
 const config = {
   headers: { Authorization: `Token ${API_KEY}` },
   params: {
