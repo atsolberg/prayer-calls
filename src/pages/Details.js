@@ -67,7 +67,7 @@ function Details() {
             <h2 className="mb-3 mt-4 text-sky-500 font-bold text-xl sm:text-3xl">
               {formatFileDate(name)}
             </h2>
-            <p className="ml-auto my-4 flex items-center">
+            <div className="ml-auto my-4 flex items-center">
               <span className="mr-2">Links -</span>
               <ul className="list-none">
                 {Object.entries(links).map(([name, url]) => (
@@ -94,7 +94,7 @@ function Details() {
               >
                 Share
               </Button>
-            </p>
+            </div>
           </div>
 
           <div className="my-4 cf">

@@ -157,3 +157,28 @@ export const call_links = {
     evening: "https://www.youtube.com/watch?v=G1dwMXd5cGQ",
   },
 };
+
+export const key_codes = {
+  esc: 27,
+  space: 32,
+  enter: 13,
+  tab: 9,
+  up: 38,
+  down: 40,
+  left: 37,
+  right: 39,
+  home: 36,
+  end: 35,
+  n: 78,
+  p: 80,
+};
+key_codes.radio = {
+  prev: [key_codes.left, key_codes.up],
+  next: [key_codes.right, key_codes.down],
+};
+key_codes.arrows = [
+  key_codes.left,
+  key_codes.up,
+  key_codes.right,
+  key_codes.down,
+];

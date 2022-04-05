@@ -1,4 +1,5 @@
 import q from "./element";
+import showdown from "showdown";
 
 /**
  * Convert markdown to html
@@ -8,7 +9,7 @@ import q from "./element";
 export function convertMdToHtml(md) {
   if (!md) return `<span>loading</span>`;
 
-  const c = new window.showdown.Converter();
+  const c = new showdown.Converter();
   const html = q.create(c.makeHtml(md));
   const div = document.createElement("div");
   div.append(html);

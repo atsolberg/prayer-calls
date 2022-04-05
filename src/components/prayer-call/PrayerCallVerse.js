@@ -31,11 +31,11 @@ const vStyles = css`
   }
 `;
 
-function PrayerCallVerse(props) {
+function PrayerCallVerse({ text, lineNum }) {
   const [bibleId] = useBibles();
   const [setModalOpen, setModalCopy] = useContext(PcCtx);
 
-  const verse = props.verse.replace(/_/g, "");
+  const verse = text.replace(/_/g, "");
   const [scripture, setScripture] = useState("");
   const isRange = verse.includes("-");
   const end = verse.lastIndexOf(" ");
@@ -84,7 +84,7 @@ function PrayerCallVerse(props) {
   }, [bibleId, book, name, verseId]);
 
   return (
-    <div className="verse">
+    <div data-line={lineNum} className="verse">
       <p className="py-1">
         <A
           href={`https://my.bible.com/bible/1/${book?.id}.${chapter}.KJV`}

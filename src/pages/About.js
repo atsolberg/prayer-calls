@@ -27,9 +27,9 @@ function About() {
           target="_blank"
           rel="noreferrer"
           className="whitespace-nowrap"
+          external
         >
-          billyebrim.org{" "}
-          <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
+          billyebrim.org
         </A>
       </p>
       <div className="sm:flex">
@@ -38,18 +38,18 @@ function About() {
             href="https://billyebrim.org/weekly-israel-prayer-call/"
             target="_blank"
             rel="noreferrer"
+            external
           >
-            Morning Prayer{" "}
-            <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
+            Morning Prayer
           </A>
           <A
             href="https://billyebrim.org/israel-prayer-call/"
             target="_blank"
             rel="noreferrer"
             className="ml-4 pl-4 border-l border-slate-400 dark:border-slate-200/25"
+            external
           >
-            Archive{" "}
-            <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
+            Archive
           </A>
         </p>
         <p className="sm:ml-20">
@@ -57,18 +57,18 @@ function About() {
             href="https://billyebrim.online.church/"
             target="_blank"
             rel="noreferrer"
+            external
           >
-            Noon Prayer{" "}
-            <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
+            Noon Prayer
           </A>
           <A
             href="https://billyebrim.org/wednesday-noon-prayer/"
             target="_blank"
             rel="noreferrer"
             className="ml-4 pl-4 border-l border-slate-400 dark:border-slate-200/25"
+            external
           >
-            Archive{" "}
-            <i className="fa-solid fa-xs fa-arrow-up-right-from-square" />
+            Archive
           </A>
         </p>
       </div>
@@ -79,7 +79,8 @@ function About() {
         <TodoItem done>Add next/prev links</TodoItem>
         <TodoItem done>Fix links when no morning call exists</TodoItem>
         <TodoItem done>Add custom links</TodoItem>
-        <TodoItem>Add preview to search</TodoItem>
+        <TodoItem done>Add preview to search</TodoItem>
+        <TodoItem done>Add env vars for keys</TodoItem>
         <TodoItem>Get a logo?</TodoItem>
         <TodoItem>Add share feature</TodoItem>
       </ul>

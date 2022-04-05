@@ -3,78 +3,21 @@ import cx from "classnames";
 
 import usePrevious from "../../hooks/usePrevious";
 import { useCalls } from "../../providers/CallsProvider";
-import { months } from "../../util/constants";
+import { key_codes } from "../../util/constants";
+import q from "../../util/element";
 
-import A from "../anchor/A";
 import Magnifier from "../icons/Magnifier";
-import { Link } from "react-router-dom";
 import Button from "../button/Button";
-
-function lineKey(l) {
-  return `${l.timestamp}-${l.lineNum}`;
-}
-function abbrDate(date) {
-  let abbr = date;
-  months.forEach((m) => {
-    abbr = abbr.replace(m.name, m.abbr);
-  });
-  return abbr;
-}
-
-function Hit({ line, term, onHide }) {
-  const { text, textL = text.toLowerCase(), date, file } = line;
-  const start = textL.indexOf(term);
-  const end = start + term.length;
-  const phrase = `${text.substring(
-    0,
-    start
-  )}<span class="bg-sky-200 dark:bg-sky-900/75 p-0.5 rounded">${text.substring(
-    start,
-    end
-  )}</span>${text.substring(end)}`;
-
-  return (
-    <div
-      className={cx([
-        "flex items-start justify-between",
-        "text-sm",
-        "pt-1",
-        "border-1",
-        "border-t",
-        "border-slate-300 dark:border-slate-700",
-        "first:border-t-0",
-      ])}
-    >
-      <span dangerouslySetInnerHTML={{ __html: phrase }} />
-      <span className="whitespace-nowrap">
-        <A as={Link} to={`/details/${file}`} onClick={onHide}>
-          <span className="hidden sm:inline">{date}</span>
-          <span className="sm:hidden">{abbrDate(date)}</span>
-        </A>
-      </span>
-    </div>
-  );
-}
-
-function Results({ term, hits, onHide }) {
-  return (
-    <div className="my-5 px-2 max-h-[60vh] sm:max-h-[350px] overflow-y-auto space-y-1">
-      {hits.length ? (
-        hits.map((h) => (
-          <Hit key={lineKey(h)} line={h} term={term} onHide={onHide} />
-        ))
-      ) : (
-        <div className="text-sm">
-          <i>No matching text found</i>
-        </div>
-      )}
-    </div>
-  );
-}
+import SearchResults from "./SearchResults";
 
 function Search({ active, onHide, ...rest }) {
-  const inputRef = useRef();
+  const refs = useRef({
+    input: useRef(),
+    preview: useRef(),
+    hits: useRef(),
+  }).current;
 
+  const [highlight, setHighlight] = useState(0);
   const [search, setSearch] = useState("");
   const prevActive = usePrevious(active);
 
@@ -82,35 +25,59 @@ function Search({ active, onHide, ...rest }) {
   const lines = useCalls()?.line_data || [];
   const length = term.trim().length > 2;
   const hits = length
-    ? lines.filter((l) => l.text.toLowerCase().includes(term))
+    ? lines
+        .filter((l) => !l.text.startsWith("#"))
+        .filter((l) => l.text.toLowerCase().includes(term))
     : [];
+
   const files = hits.reduce((set, h) => {
     set.add(h.file);
     return set;
   }, new Set()).size;
 
-  const onChange = ({ target: { value } }) => setSearch(value);
-  const onEsc = ({ keyCode }) => keyCode === 27 /* esc */ && onHide();
+  function onChange({ target: { value } }) {
+    setHighlight(0); // first hit if any
+    setSearch(value);
+  }
+  function onEsc({ keyCode }) {
+    if (keyCode === 27 /* esc */) onHide();
+  }
+  function onUpDown({ keyCode }) {
+    if (keyCode === key_codes.up || keyCode === key_codes.down) {
+      const up = keyCode === key_codes.up;
+      const next = up
+        ? Math.max(highlight - 1, 0)
+        : Math.min(highlight + 1, hits.length - 1);
+      setHighlight(next);
+
+      const hitsContainer = refs.hits.current;
+      const highlighted = q.qs(hitsContainer, `.hit:nth-child(${next + 1})`);
+      if (highlighted) highlighted?.scrollIntoView(false);
+    }
+  }
 
   // Auto-focus on activation
   useEffect(() => {
-    if (!prevActive && active) inputRef.current.focus();
-  }, [active, prevActive]);
+    if (!prevActive && active) refs.input.current.focus();
+  }, [active, prevActive, refs.input]);
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={cx([
         "absolute",
         "top-full",
-        "rounded-b",
+        "rounded-b-lg",
+        "overflow-hidden",
         "bg-slate-200 dark:bg-slate-800",
-        "mx-auto w-11/12 lg:w-7/12",
+        "mx-auto w-11/12 lg:w-5/12",
         "border",
         "border-slate-300 dark:border-slate-50/[0.1]",
         "left-1/2",
         "-translate-x-1/2",
         { hidden: !active },
       ])}
+      onKeyDown={onUpDown}
       {...rest}
     >
       <div className="p-2 flex items-center justify-between">
@@ -147,7 +114,7 @@ function Search({ active, onHide, ...rest }) {
           <Magnifier />
 
           <input
-            ref={inputRef}
+            ref={refs.input}
             className={cx([
               "w-full",
               "focus-visible:outline-0 dark:focus-visible:outline-0",
@@ -166,7 +133,14 @@ function Search({ active, onHide, ...rest }) {
         </label>
       </div>
 
-      <Results term={term} hits={hits} onHide={onHide} />
+      <SearchResults
+        term={term}
+        hits={hits}
+        onHide={onHide}
+        highlight={highlight}
+        setHighlight={setHighlight}
+        refs={refs}
+      />
     </div>
   );
 }
