@@ -26,7 +26,8 @@ export function handleApiError(msg, apiRes = {}, res) {
 
   if (isAxiosError) {
     const json = apiRes.toJSON();
-    status = json.status;
+    const resStatus = Number(json.status);
+    if (resStatus >= 100 && resStatus < 600) status = resStatus;
     message = json.message;
     data = apiRes?.response?.data || {};
   }

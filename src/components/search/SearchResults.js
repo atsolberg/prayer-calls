@@ -87,7 +87,7 @@ function SearchResults({
     const preview = refs.preview.current;
     if (preview && lineNum !== -1) {
       const y = q.qs(preview, `[data-line="${lineNum}"]`)?.offsetTop;
-      preview.scrollTo(0, Math.max(y - 30, 0));
+      preview.scrollTo(0, Math.max(y - 60, 0));
     }
   }, [refs, lineNum]);
 
@@ -97,8 +97,8 @@ function SearchResults({
       <div
         ref={refs.hits}
         className={cx([
-          "my-5",
-          "px-2",
+          "relative",
+          "my-5 px-2",
           "max-h-[30vh]",
           "sm:max-h-[150px]",
           "overflow-y-auto",

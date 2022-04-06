@@ -42,7 +42,8 @@ function Search({ active, onHide, ...rest }) {
   function onEsc({ keyCode }) {
     if (keyCode === 27 /* esc */) onHide();
   }
-  function onUpDown({ keyCode }) {
+  function onUpDown(e) {
+    const { keyCode } = e;
     if (keyCode === key_codes.up || keyCode === key_codes.down) {
       const up = keyCode === key_codes.up;
       const next = up
@@ -51,8 +52,16 @@ function Search({ active, onHide, ...rest }) {
       setHighlight(next);
 
       const hitsContainer = refs.hits.current;
+      const height = q.height(hitsContainer);
       const highlighted = q.qs(hitsContainer, `.hit:nth-child(${next + 1})`);
-      if (highlighted) highlighted?.scrollIntoView(false);
+      const top = highlighted?.offsetTop;
+      if (!up && top + 15 > height) {
+        const nextTop = top - height + q.outerHeight(highlighted) + 2;
+        hitsContainer.scrollTo({ top: nextTop, left: 0, behavior: "smooth" });
+      }
+      if (up && top < hitsContainer.scrollTop) {
+        hitsContainer.scrollTo({ top, left: 0, behavior: "smooth" });
+      }
     }
   }
 
