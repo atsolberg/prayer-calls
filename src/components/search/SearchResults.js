@@ -42,7 +42,7 @@ function Hit({ line, term, onHide, onClick, highlight }) {
       <div
         className={cx(
           ["flex items-start justify-between", "text-sm", "p-1", "rounded-md"],
-          { "bg-slate-700": highlight }
+          { "bg-slate-300 dark:bg-slate-700": highlight }
         )}
       >
         <span dangerouslySetInnerHTML={{ __html: phrase }} />
@@ -60,7 +60,9 @@ function Hit({ line, term, onHide, onClick, highlight }) {
 function Line({ line, highlight }) {
   return (
     <div
-      className={cx("px-1", "rounded-md", { "bg-sky-900": highlight })}
+      className={cx("px-1", "rounded-md", {
+        "bg-gray-200 dark:bg-sky-900": highlight,
+      })}
       data-line={line.lineNum}
       dangerouslySetInnerHTML={{ __html: line.html.innerHTML }}
     />
@@ -132,8 +134,8 @@ function SearchResults({
           ref={refs.preview}
           className={cx([
             "relative",
-            "bg-slate-900",
-            "border-t-4 border-slate-700",
+            "bg-gray-100 dark:bg-slate-900",
+            "border-t-4 border-slate-400 dark:border-slate-700",
             "mt-5 px-2 py-2",
             "space-y-1",
             "max-h-[30vh] sm:max-h-[250px]",
