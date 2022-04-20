@@ -13,7 +13,8 @@
     "startlocal": "npm -s run build && node dist/backend/index.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage && open ./coverage/lcov-report/index.html"
+    "test:coverage": "jest --coverage && open ./coverage/lcov-report/index.html",
+    "deploy": "git push heroku main"
   },
   "repository": {
     "type": "git",
