@@ -104,6 +104,21 @@ const links = [
         label: "Signs of The Return | Rev. Joe Morris | LW",
         href: "https://www.youtube.com/watch?v=Wkzc0qrOS_c&t=1s",
       },
+      {
+        label:
+          "4/22/2022 || End Time Conference - Session 1 || Dr. Billye Brim || Friday Service || 7pm",
+        href: "https://youtu.be/8H2DIP0Zru4?t=1781",
+      },
+      {
+        label:
+          "4/23/22 || End Time Conference - Session 2 || Dr. Billye Brim || Saturday Service || 6pm",
+        href: "https://youtu.be/tcs_c_9Xros?t=1529",
+      },
+      {
+        label:
+          "4/24/22 || End Time Conference - Session 3 || Dr. Billye Brim || Sunday Service || 10am",
+        href: "https://youtu.be/BQeEMVEhZFQ?t=1878",
+      },
     ],
   },
   {
