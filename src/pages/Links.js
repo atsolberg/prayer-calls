@@ -156,8 +156,16 @@ const links = [
         href: "https://youtu.be/KidWCbWv0Qo?t=2983",
       },
       {
-        label: "flashpoint 8-1-21",
+        label: "FlashPoint 8-1-21",
         href: "https://www.youtube.com/watch?v=po4H9xcGBe8",
+      },
+      {
+        label: "Victory Channel Interview",
+        href: "https://vimeo.com/722629001/f703005ab0",
+      },
+      {
+        label: "FlashPoint 6-21-22 - Aaron's Interview",
+        href: "https://rumble.com/v19c8xh-flashpoint-woke-walmart-and-what-comes-next...-62122.html",
       },
     ],
   },
