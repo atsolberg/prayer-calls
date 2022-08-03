@@ -167,6 +167,10 @@ const links = [
         label: "FlashPoint 6-21-22 - Aaron's Interview",
         href: "https://rumble.com/v19c8xh-flashpoint-woke-walmart-and-what-comes-next...-62122.html",
       },
+      {
+        label: "FlashPoint 7-31-22 - Charlie Kirk and Hank's Prophechy",
+        href: "https://rumble.com/v1egcnv-divine-reset-charlie-kirk-and-hank-kunneman-flashpoint-fort-worth-highlight.html",
+      },
     ],
   },
   {
