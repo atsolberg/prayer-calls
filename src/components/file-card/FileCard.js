@@ -35,6 +35,7 @@ function FileCard({ file }) {
         <div className="square">
           <div
             className="square-content"
+            data-testid="thumbnail"
             dangerouslySetInnerHTML={{
               __html: convertMdToHtml(contents).outerHTML,
             }}

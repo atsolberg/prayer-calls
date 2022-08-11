@@ -20,8 +20,8 @@ test("displays a default thumbnail", async () => {
   );
 
   const thumb = await card.findByTestId("thumbnail");
-  expect(thumb.src).toContain("placeholder.com");
+  expect(thumb).toHaveTextContent(/foo bar/i);
 
-  const name = await card.findByRole("link", { name: file.name });
-  expect(name).toBeTruthy();
+  const link = await card.findByRole("link", { name: file.contents });
+  expect(link.href).toMatch(new RegExp(`/details/${file.id}$`));
 });
