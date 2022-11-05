@@ -6,8 +6,6 @@ import { shape, string } from "prop-types";
 import { convertMdToHtml } from "../../util/markdown";
 import { formatFileDate } from "../../util/date";
 
-import styles from "./styles";
-
 FileCard.propTypes = {
   file: shape({
     id: string.isRequired,
@@ -21,7 +19,6 @@ function FileCard({ file }) {
     <div className="relative">
       <Link
         to={`/details/${id}`}
-        css={styles}
         className={cx([
           "block",
           "relative",

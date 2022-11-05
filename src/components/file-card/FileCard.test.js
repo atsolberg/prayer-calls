@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-
+import React from "react";
 import { expect, test } from "@jest/globals";
 import { render } from "@testing-library/react";
 import { StaticRouter } from "react-router-dom/server";
@@ -14,7 +14,7 @@ test("displays a default thumbnail", async () => {
 
   const file = { id: "1234", name: "01-01-21.md", contents: "foo bar" };
   const card = render(
-    <StaticRouter>
+    <StaticRouter location="/">
       <FileCard file={file} />
     </StaticRouter>
   );

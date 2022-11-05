@@ -1,3 +1,4 @@
+import React from "react";
 import A from "../components/anchor/A";
 
 const links = [

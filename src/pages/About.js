@@ -1,5 +1,7 @@
-import A from "../components/anchor/A";
+import React from "react";
 import { bool, node } from "prop-types";
+
+import A from "../components/anchor/A";
 
 TodoItem.propTypes = {
   children: node,

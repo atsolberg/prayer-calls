@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { css } from "@emotion/react";
 import cx from "classnames";
 
 import { useBibles } from "../../providers/BiblesProvider";
@@ -10,26 +9,6 @@ import { truncate } from "../../util/string";
 import A from "../anchor/A";
 import Button from "../button/Button";
 import PcCtx from "./context";
-
-const vStyles = css`
-  max-width: 500px;
-  .v, // scripture.api.bible
-  .verse-num, // api.esv.org
-  b {
-    // bible.org (NET)
-    font-weight: bold;
-
-    // super script
-    top: -0.5em;
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-  }
-  .v {
-    margin-right: 5px;
-  }
-`;
 
 function PrayerCallVerse({ text, lineNum }) {
   const [bibleId] = useBibles();
@@ -95,10 +74,7 @@ function PrayerCallVerse({ text, lineNum }) {
           {verse}
         </A>
       </p>
-      <blockquote
-        css={vStyles}
-        className="m-2 p-4 inset-0 bg-slate-300/25 dark:bg-slate-700/25 rounded"
-      >
+      <blockquote className="verse m-2 p-4 inset-0 bg-slate-300/25 dark:bg-slate-700/25 rounded">
         <div dangerouslySetInnerHTML={{ __html: scripture.content }} />
         {scripture ? (
           <div className="text-right mt-1">
